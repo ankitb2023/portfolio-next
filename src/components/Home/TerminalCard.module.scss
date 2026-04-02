@@ -1,0 +1,81 @@
+/* Glassmorphism Code Editor Card */
+.editorCard {
+  width: 100%;
+  background: rgba(20, 5, 40, 0.55);
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(132, 43, 226, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  animation: floatUpDown 6s ease-in-out infinite;
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+.editorCard:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 50px rgba(132, 43, 226, 0.4);
+  border-color: rgba(180, 110, 255, 0.7);
+}
+
+.editorHeader {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 16px;
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.editorHeader span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dotRed { background: #ff5f56; }
+.dotYellow { background: #ffbd2e; }
+.dotGreen { background: #27c93f; }
+
+.editorBody {
+  padding: 24px 20px;
+  font-family: 'Fira Code', Consolas, Monaco, 'Courier New', Courier, monospace;
+  font-size: 1.45rem;
+  line-height: 1.7;
+  color: #e5e5e5;
+  text-align: left;
+}
+
+.cmd { color: #a3a3a3; }
+.check { color: #27c93f; font-weight: bold; margin-right: 8px; }
+.keyword { color: #ff7b72; }
+.variable { color: #79c0ff; }
+.operator { color: #b46eff; }
+.string { color: #a5d6ff; }
+.cursorBlink {
+  animation: blink 1s step-end infinite;
+  color: #c084fc;
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media(max-width: 768px) {
+  .editorBody {
+    font-size: 1.2rem;
+    padding: 16px;
+  }
+}
+
+@media(max-width: 450px) {
+  .editorBody {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+}

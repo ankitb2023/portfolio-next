@@ -1,0 +1,133 @@
+.home {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  min-height: 100vh;
+  align-items: center;
+  z-index: 10;
+  padding: 0 100px;
+  background: #05020a;
+  background: radial-gradient(circle at 50% 30%, #3e1273 0%, #180536 40%, #05010a 100%);
+}
+
+.bgLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 4px,
+    rgba(132, 43, 226, 0.03) 4px,
+    rgba(132, 43, 226, 0.05) 8px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 40px,
+    rgba(255, 255, 255, 0.02) 40px,
+    rgba(255, 255, 255, 0.02) 41px
+  );
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center top, rgba(132, 43, 226, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.image {
+  flex: 1 1 40rem;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.graphicContainer {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 200px; /* Space for the scattered nodes underneath */
+}
+
+.cardGlowEffect {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(132, 43, 226, 0.4) 0%, transparent 65%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulseGlow 4s infinite alternate ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@media(max-width: 1024px) {
+  .home {
+    padding: 0 50px;
+  }
+}
+
+@media(max-width: 768px) {
+  .home {
+    padding: 100px 30px 50px;
+  }
+  .image {
+    text-align: center;
+    flex: 1 1 35rem;
+    order: 1; 
+  }
+  .graphicContainer {
+    max-width: 320px;
+  }
+}
+
+@media(max-width: 450px) {
+  .home {
+    padding: 80px 20px 40px;
+  }
+  .graphicContainer {
+    max-width: 280px;
+  }
+}
