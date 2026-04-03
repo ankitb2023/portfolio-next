@@ -82,59 +82,62 @@ export const TerminalCard = () => {
   }, []);
 
   return (
-    <div className={styles.editorCard}>
-      <div className={styles.editorHeader}>
-        <span className={styles.dotRed}></span>
-        <span className={styles.dotYellow}></span>
-        <span className={styles.dotGreen}></span>
-      </div>
-      <div className={styles.editorBody}>
-        <code>
-          {terminalLines.map((line, idx) => {
-            const isFuture = idx > currentLineIndex;
-            const isCurrent = idx === currentLineIndex;
-            const isPast = idx < currentLineIndex;
+    <div className={styles.terminalContainer}>
+      <div className={styles.animatedBorder}></div>
+      <div className={styles.editorCard}>
+        <div className={styles.editorHeader}>
+          <span className={styles.dotRed}></span>
+          <span className={styles.dotYellow}></span>
+          <span className={styles.dotGreen}></span>
+        </div>
+        <div className={styles.editorBody}>
+          <code>
+            {terminalLines.map((line, idx) => {
+              const isFuture = idx > currentLineIndex;
+              const isCurrent = idx === currentLineIndex;
+              const isPast = idx < currentLineIndex;
 
-            if (line.type === 'delay') {
-              if (isCurrent) {
-                return (
-                  <React.Fragment key={line.id}>
-                    <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
-                    <span className={styles.cursorBlink}>_</span>
-                  </React.Fragment>
-                );
+              if (line.type === 'delay') {
+                if (isCurrent) {
+                  return (
+                    <React.Fragment key={line.id}>
+                      <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
+                      <span className={styles.cursorBlink}>_</span>
+                    </React.Fragment>
+                  );
+                }
+                return null;
               }
-              return null;
-            }
 
-            return (
-              <React.Fragment key={line.id}>
-                {isFuture ? (
-                  <span style={{ visibility: 'hidden' }}>
-                    {line.prefix && <span className={styles.cmd}>{line.prefix} </span>}
-                    {line.render ? line.render() : <span className={styles.plainText}>{line.rawText}</span>}
-                  </span>
-                ) : isCurrent ? (
-                  <>
-                    <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
+              return (
+                <React.Fragment key={line.id}>
+                  {isFuture ? (
+                    <span style={{ visibility: 'hidden' }}>
+                      {line.prefix && <span className={styles.cmd}>{line.prefix} </span>}
+                      {line.render ? line.render() : <span className={styles.plainText}>{line.rawText}</span>}
+                    </span>
+                  ) : isCurrent ? (
+                    <>
+                      <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
+                      <span className={styles.cursorBlink}>_</span>
+                    </>
+                  ) : (
+                    <>
+                      {line.prefix && <span className={styles.cmd}>{line.prefix} </span>}
+                      {line.render ? line.render() : <span className={styles.plainText}>{line.rawText}</span>}
+                    </>
+                  )}
+                  
+                  {/* Keep blinking cursor at the very end after completion */}
+                  {idx === terminalLines.length - 1 && isPast && (
                     <span className={styles.cursorBlink}>_</span>
-                  </>
-                ) : (
-                  <>
-                    {line.prefix && <span className={styles.cmd}>{line.prefix} </span>}
-                    {line.render ? line.render() : <span className={styles.plainText}>{line.rawText}</span>}
-                  </>
-                )}
-                
-                {/* Keep blinking cursor at the very end after completion */}
-                {idx === terminalLines.length - 1 && isPast && (
-                  <span className={styles.cursorBlink}>_</span>
-                )}
-                <br />
-              </React.Fragment>
-            );
-          })}
-        </code>
+                  )}
+                  <br />
+                </React.Fragment>
+              );
+            })}
+          </code>
+        </div>
       </div>
     </div>
   );

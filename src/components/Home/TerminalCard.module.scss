@@ -1,21 +1,69 @@
-/* Glassmorphism Code Editor Card */
+.terminalContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  padding: 2px; /* Border thickness */
+  overflow: hidden;
+  animation: floatUpDown 6s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(132, 43, 226, 0.15);
+}
+
+.animatedBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.animatedBorder::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(98, 0, 234, 0.7) 50%,
+    rgba(186, 104, 200, 0.6) 75%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: borderSpin 4s linear infinite;
+}
+
+@keyframes borderSpin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 .editorCard {
   width: 100%;
-  background: rgba(20, 5, 40, 0.55);
+  height: 100%;
+  background: rgba(20, 5, 40, 0.9);
   border-radius: 12px;
-  border: 1px solid rgba(139, 92, 246, 0.4);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(132, 43, 226, 0.15);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
-  animation: floatUpDown 6s ease-in-out infinite;
   transition: all 0.4s ease;
-  z-index: 10;
+  position: relative;
+  z-index: 1;
 }
 
 .editorCard:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 50px rgba(132, 43, 226, 0.4);
-  border-color: rgba(180, 110, 255, 0.7);
+  background: rgba(25, 10, 50, 0.95);
 }
 
 .editorHeader {
