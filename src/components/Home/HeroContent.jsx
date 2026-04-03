@@ -29,6 +29,7 @@ export const HeroContent = () => {
         </span>
       </p>
         <div className={styles.btnContainer}>
+          <div className={styles.btnAnimatedBorder}></div>
           <Link href="#about" className={styles.btn} aria-label="About Me section">
             <span>About Me</span> <i className="fas fa-arrow-circle-down" aria-hidden="true"></i>
           </Link>
