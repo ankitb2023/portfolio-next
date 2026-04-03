@@ -46,21 +46,65 @@
   color: #b46eff;
 }
 
-.btn {
+.btnContainer {
+  display: inline-flex;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  padding: 2px; /* Smooth 2px CSS Animated Border */
+  z-index: 10;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(132, 43, 226, 0.4);
   margin-top: 2rem;
+}
+
+.btnContainer::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 400%;
+  background: conic-gradient(from 0deg, transparent 0%, transparent 60%, rgba(180, 110, 255, 0.8) 80%, #ffffff 100%);
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: borderSpin 3s linear infinite;
+  z-index: -1;
+}
+
+@keyframes borderSpin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.btnContainer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(132, 43, 226, 0.8);
+}
+
+.btnContainer:hover .btn {
+  background: linear-gradient(90deg, #842be2, #9d4cf5);
+}
+
+.btnContainer:hover i {
+  transform: translateY(3px);
+}
+
+.btn {
   display: inline-flex;
   align-items: center;
   padding: 1.4rem 3.5rem;
-  border-radius: 50px;
+  border-radius: 48px; /* Inner bounding snap */
   transition: all 0.4s ease;
   color: #fff;
-  background: linear-gradient(90deg, #551b8c, #842be2);
-  box-shadow: 0 0 20px rgba(132, 43, 226, 0.4);
+  background: #0d041a; /* Dark background to let gradient race around edge */
   font-family: inherit;
   text-decoration: none;
   position: relative;
   z-index: 10;
-  border: 1px solid rgba(180, 110, 255, 0.2);
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
 .btn span {
@@ -75,21 +119,10 @@
   transition: transform 0.3s ease;
 }
 
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 30px rgba(132, 43, 226, 0.8);
-  background: linear-gradient(90deg, #842be2, #9d4cf5);
-  border-color: rgba(180, 110, 255, 0.6);
-}
-
-.btn:hover i {
-  transform: translateY(3px);
-}
-
 /* social icons start */
 .socials {
   position: relative;
-  margin-top: 7rem;
+  margin-top: 5rem;
 }
 
 .socialIcons {
@@ -97,31 +130,73 @@
   margin-bottom: 0;
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  flex-wrap: wrap; /* Prevents overflow breaking */
 }
 
 .socialIcon {
-  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  color: #a3a3a3;
+  background: rgba(20, 5, 40, 0.4);
+  height: 50px;
+  max-width: 50px; /* Constrict totally tight to circle bounds initially */
+  border-radius: 25px;
+  padding: 0 5px; /* Symmetrical internal tight pad */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #e5e5e5;
-  background: rgba(255, 255, 255, 0.03);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  font-size: 1.8rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  flex-shrink: 0;
+}
+
+.socialName {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-15px);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  margin-left: 10px;
+  margin-right: 18px;
+  color: #fff;
 }
 
 .socialIcon:hover {
-  color: #b46eff;
-  background: rgba(132, 43, 226, 0.15);
-  border-color: #842be2;
-  box-shadow: 0 0 20px rgba(132, 43, 226, 0.5);
-  transform: translateY(-4px);
+  max-width: 180px; 
+  background: rgba(20, 5, 40, 0.8);
+  border-color: rgba(180, 110, 255, 0.5);
+  box-shadow: 0 10px 25px rgba(132, 43, 226, 0.3);
+  transform: translateY(-1px);
+}
+
+.socialIcon:hover .iconWrapper {
+  background: linear-gradient(135deg, #b46eff, #842be2);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(180, 110, 255, 0.6);
+  transform: rotate(360deg);
+}
+
+.socialIcon:hover .socialName {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.1s;
 }
 
 @keyframes fadeIn {
@@ -157,7 +232,7 @@
 }
 
 @media(max-width: 450px) {
-  .btn {
+  .btnContainer {
     position: relative;
     margin-top: 3rem;
   }
