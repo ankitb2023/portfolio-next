@@ -90,28 +90,50 @@ export const TerminalCard = () => {
       </div>
       <div className={styles.editorBody}>
         <code>
-          {terminalLines.slice(0, currentLineIndex + 1).map((line, idx) => {
+          {terminalLines.map((line, idx) => {
+            const isFuture = idx > currentLineIndex;
+            const isCurrent = idx === currentLineIndex;
+            const isPast = idx < currentLineIndex;
+
             if (line.type === 'delay') {
-              if (idx === currentLineIndex) {
-                return <TypewriterContent key={line.id} line={line} index={idx} onComplete={handleComplete} />;
+              if (isCurrent) {
+                return (
+                  <React.Fragment key={line.id}>
+                    <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
+                    <span className={styles.cursorBlink}>_</span>
+                  </React.Fragment>
+                );
               }
               return null;
             }
+
             return (
               <React.Fragment key={line.id}>
-                {idx === currentLineIndex ? (
-                  <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
+                {isFuture ? (
+                  <span style={{ visibility: 'hidden' }}>
+                    {line.prefix && <span className={styles.cmd}>{line.prefix} </span>}
+                    {line.render ? line.render() : <span className={styles.plainText}>{line.rawText}</span>}
+                  </span>
+                ) : isCurrent ? (
+                  <>
+                    <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
+                    <span className={styles.cursorBlink}>_</span>
+                  </>
                 ) : (
                   <>
                     {line.prefix && <span className={styles.cmd}>{line.prefix} </span>}
                     {line.render ? line.render() : <span className={styles.plainText}>{line.rawText}</span>}
                   </>
                 )}
-                {line.type !== 'delay' && <br />}
+                
+                {/* Keep blinking cursor at the very end after completion */}
+                {idx === terminalLines.length - 1 && isPast && (
+                  <span className={styles.cursorBlink}>_</span>
+                )}
+                <br />
               </React.Fragment>
             );
           })}
-          <span className={styles.cursorBlink}>_</span>
         </code>
       </div>
     </div>
