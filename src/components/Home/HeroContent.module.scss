@@ -171,26 +171,27 @@ background: conic-gradient(
 .socialIcon {
   display: flex;
   align-items: center;
-  color: #a3a3a3;
-  background: rgba(20, 5, 40, 0.4);
+  color: #d1d5db;
+  background: rgba(45, 15, 80, 0.4); /* Richer resting purple background */
   height: 50px;
   max-width: 50px; /* Constrict totally tight to circle bounds initially */
   border-radius: 25px;
   padding: 0 5px; /* Symmetrical internal tight pad */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(180, 110, 255, 0.3); /* Stronger visible border natively */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   text-decoration: none;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(132, 43, 226, 0.1); /* Lighter resting shadow */
 }
 
 .iconWrapper {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(132, 43, 226, 0.15); /* Sleek purple inner base */
+  color: #d8b4fe; /* Glowing purple icon inherently instead of dull gray */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,14 +217,14 @@ background: conic-gradient(
   max-width: 180px; 
   background: rgba(20, 5, 40, 0.8);
   border-color: rgba(180, 110, 255, 0.5);
-  box-shadow: 0 10px 25px rgba(132, 43, 226, 0.3);
+  box-shadow: 0 8px 20px rgba(132, 43, 226, 0.2); /* Lighter hover shadow */
   transform: translateY(-1px);
 }
 
 .socialIcon:hover .iconWrapper {
   background: linear-gradient(135deg, #b46eff, #842be2);
   color: #fff;
-  box-shadow: 0 0 15px rgba(180, 110, 255, 0.6);
+  box-shadow: 0 0 12px rgba(180, 110, 255, 0.4); /* Lighter icon box shadow */
   transform: rotate(360deg);
 }
 
