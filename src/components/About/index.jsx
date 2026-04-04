@@ -37,7 +37,7 @@ export const About = () => {
     return (
         <section className={styles.about} id="about">
             <h2 className={styles.heading}>
-                <i className="fas fa-user-alt" aria-hidden="true"></i> About <span>Me</span>
+                <i className="fas fa-user-alt" aria-hidden="true"></i> Beyond the <span>Code</span>
             </h2>
 
             <div className={styles.row}>

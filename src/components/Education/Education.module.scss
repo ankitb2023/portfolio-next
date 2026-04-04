@@ -1,0 +1,188 @@
+.education {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0px 100px;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+  margin-top: 6rem;
+}
+
+.heading {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+
+  i {
+    font-size: 3rem;
+    color: #842be2;
+    text-shadow: 0 0 20px rgba(132, 43, 226, 0.6);
+  }
+
+  span {
+    background: linear-gradient(to right, #b46eff, #842be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.quote {
+  font-size: 1.4rem;
+  color: rgba(229, 229, 229, 0.7);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 600px;
+}
+
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: rgba(20, 5, 40, 0.4);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 175px; /* Constraining height specifically requested */
+
+  &:hover {
+    border-color: rgba(180, 110, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(132, 43, 226, 0.2);
+    transform: translateX(10px);
+
+    .image img {
+      transform: scale(1.05);
+      filter: grayscale(0%) brightness(1.05);
+    }
+  }
+}
+
+.image {
+  width: 320px; /* Generous constant horizontal span without crushing vertical */
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(139, 92, 246, 0.2);
+
+  img {
+    transition: all 0.5s ease;
+    filter: grayscale(10%) brightness(0.9);
+  }
+}
+
+.content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    font-size: 1.8rem;
+    color: #e5e5e5;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+
+    span {
+      color: #b46eff;
+      font-weight: 600;
+    }
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: rgba(229, 229, 229, 0.8);
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.3rem;
+    font-weight: 500;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      /* Glowing gradient line fading at both edges */
+      background: linear-gradient(to right, rgba(180, 110, 255, 0.1), rgba(180, 110, 255, 0.8), rgba(180, 110, 255, 0.1));
+    }
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.6rem 1.6rem;
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 0.8rem;
+    letter-spacing: 0.9px;
+    width: fit-content;
+    align-self: flex-end; /* Slides the pill to the right edge */
+
+    span {
+      color: #b46eff;
+      margin-left: 0.6rem;
+    }
+  }
+}
+
+@media(max-width: 1024px) {
+  .education {
+    padding: 60px 60px;
+  }
+}
+
+@media(max-width: 768px) {
+  .education {
+    padding: 60px 40px;
+  }
+  .box {
+    flex-direction: column;
+    height: auto; /* override compacting */
+  }
+  .image {
+    width: 100%;
+    min-height: 220px;
+    border-right: none;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  }
+  .content {
+    padding: 2rem;
+  }
+}
+
+@media(max-width: 450px) {
+  .education {
+    padding: 40px 20px;
+  }
+  .content {
+    padding: 1.5rem 1.2rem;
+    
+    h3 { font-size: 1.5rem; }
+  }
+  .image { min-height: 180px; }
+}
