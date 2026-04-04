@@ -145,9 +145,12 @@ html{
     --foot2-color:#E90606;
     --foot3-color:#000;
 }
-body{
-  background: var(--primary-color);
+body {
+  background: #05020a;
+  background: radial-gradient(circle at 50% 0%, #3e1273 0%, #180536 30%, #05010a 100%) fixed;
+  background-size: cover;
   font-family: 'Poppins', sans-serif;
+  color: #fff;
 }
 
 *::selection{

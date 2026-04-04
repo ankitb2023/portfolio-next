@@ -6,14 +6,14 @@
 }
 
 .content h3 {
-  font-size: 5.5rem;
+  font-size: 5rem;
   font-weight: 800;
   color: #e5e5e5;
   line-height: 1.2;
 }
 
 .content h3 span {
-  font-size: 5.5rem;
+  font-size: 5rem;
   font-weight: 800;
   color: transparent;
   text-shadow: 0 0 30px rgba(132, 43, 226, 0.3);
@@ -25,7 +25,7 @@
 }
 
 .content p {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #a3a3a3;
   font-weight: 400;
   padding: 1.5rem 0;
@@ -46,111 +46,8 @@
   color: #b46eff;
 }
 
-.btnContainer {
-  display: inline-flex;
-  position: relative;
-  border-radius: 50px;
-  padding: 1px; /* 1px subtle CSS Animated Border */
-  z-index: 10;
-  transition: all 0.4s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+.heroBtnSpacing {
   margin-top: 2rem;
-}
-
-.btnAnimatedBorder {
-  position: absolute;
-  inset: 0;
-  border-radius: 50px;
-  padding: 1.5px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.btnAnimatedBorder::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 400%;
-background: conic-gradient(
-  from 0deg,
-  transparent 0%,
-  transparent 60%,
-  rgba(142, 45, 226, 0.7) 65%,
-  rgba(255, 105, 180, 0.6) 100%
-);
-  transform: translate(-50%, -50%) rotate(0deg);
-  animation: borderSpin 4s linear infinite;
-}
-
-@keyframes borderSpin {
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.btnContainer:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Conic gradient changes to white/cream on hover */
-.btnContainer:hover .btnAnimatedBorder::before {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 60%,
-    rgba(250, 248, 245, 0.8) 85%, /* Cream */
-    rgba(255, 255, 255, 1) 100%   /* White */
-  );
-}
-
-.btnContainer:hover .btn {
-  background: rgba(94, 28, 185, 0.95); /* Lighter vibrant purple */
-  color: #fff; 
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3);
-}
-
-.btnContainer:hover i {
-  transform: translateY(3px);
-  color: #ffffff; /* White icon to match text */
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 1.4rem 3.5rem;
-  border-radius: 48px; /* Inner bounding snap */
-  transition: all 0.4s ease;
-  color: #fff;
-  background: rgba(49, 27, 94, 0.95); /* Deep dark indigo/purple blend */
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.15); /* Top inner 3D glow */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-family: inherit;
-  text-decoration: none;
-  position: relative;
-  z-index: 10;
-  border: none;
-  width: 100%;
-  height: 100%;
-}
-
-.btn span {
-  font-weight: 600;
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-}
-
-.btn i {
-  margin-left: 1rem;
-  font-size: 1.4rem;
-  transition: all 0.4s ease;
 }
 
 /* social icons start */
@@ -165,33 +62,41 @@ background: conic-gradient(
   list-style: none;
   display: flex;
   gap: 1.2rem;
-  flex-wrap: wrap; /* Prevents overflow breaking */
+  flex-wrap: wrap;
+  /* Prevents overflow breaking */
 }
 
 .socialIcon {
   display: flex;
   align-items: center;
   color: #d1d5db;
-  background: rgba(45, 15, 80, 0.4); /* Richer resting purple background */
+  background: rgba(45, 15, 80, 0.4);
+  /* Richer resting purple background */
   height: 50px;
-  max-width: 50px; /* Constrict totally tight to circle bounds initially */
+  max-width: 50px;
+  /* Constrict totally tight to circle bounds initially */
   border-radius: 25px;
-  padding: 0 5px; /* Symmetrical internal tight pad */
+  padding: 0 5px;
+  /* Symmetrical internal tight pad */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(180, 110, 255, 0.3); /* Stronger visible border natively */
+  border: 1px solid rgba(180, 110, 255, 0.3);
+  /* Stronger visible border natively */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   text-decoration: none;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(132, 43, 226, 0.1); /* Lighter resting shadow */
+  box-shadow: 0 4px 12px rgba(132, 43, 226, 0.1);
+  /* Lighter resting shadow */
 }
 
 .iconWrapper {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(132, 43, 226, 0.15); /* Sleek purple inner base */
-  color: #d8b4fe; /* Glowing purple icon inherently instead of dull gray */
+  background: rgba(132, 43, 226, 0.15);
+  /* Sleek purple inner base */
+  color: #d8b4fe;
+  /* Glowing purple icon inherently instead of dull gray */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,17 +119,19 @@ background: conic-gradient(
 }
 
 .socialIcon:hover {
-  max-width: 180px; 
+  max-width: 180px;
   background: rgba(20, 5, 40, 0.8);
   border-color: rgba(180, 110, 255, 0.5);
-  box-shadow: 0 8px 20px rgba(132, 43, 226, 0.2); /* Lighter hover shadow */
+  box-shadow: 0 8px 20px rgba(132, 43, 226, 0.2);
+  /* Lighter hover shadow */
   transform: translateY(-1px);
 }
 
 .socialIcon:hover .iconWrapper {
   background: linear-gradient(135deg, #b46eff, #842be2);
   color: #fff;
-  box-shadow: 0 0 12px rgba(180, 110, 255, 0.4); /* Lighter icon box shadow */
+  box-shadow: 0 0 12px rgba(180, 110, 255, 0.4);
+  /* Lighter icon box shadow */
   transform: rotate(360deg);
 }
 
@@ -239,6 +146,7 @@ background: conic-gradient(
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -246,8 +154,15 @@ background: conic-gradient(
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @media(max-width: 768px) {
@@ -255,31 +170,37 @@ background: conic-gradient(
     order: 2;
     text-align: center;
   }
+
   .content h3 {
     font-size: 4rem;
   }
+
   .content h3 span {
     font-size: 4rem;
   }
+
   .socialIcons {
     justify-content: center;
   }
 }
 
 @media(max-width: 450px) {
-  .btnContainer {
-    position: relative;
+  .heroBtnSpacing {
     margin-top: 3rem;
   }
+
   .content {
     margin-top: 20px;
   }
+
   .socials {
     margin-top: 5rem;
   }
+
   .content p {
     font-size: 1.8rem;
   }
+
   .content p span.typingText {
     font-size: 1.8rem;
   }

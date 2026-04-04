@@ -2,7 +2,7 @@ import React from 'react';
 import { HeroContent } from './HeroContent';
 import { TerminalCard } from './TerminalCard';
 import { TechNodes } from './TechNodes';
-import styles from './HomeWrapper.module.scss';
+import styles from './Home.module.scss';
 
 export const Home = () => {
   return (
@@ -16,7 +16,7 @@ export const Home = () => {
         <div className={styles.graphicContainer}>
           {/* Purple radial glow behind image/card */}
           <div className={styles.cardGlowEffect} aria-hidden="true"></div>
-          
+
           <TerminalCard />
           <TechNodes />
         </div>

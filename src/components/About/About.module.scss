@@ -1,0 +1,229 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 100px;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  margin-top: 1rem;
+  min-height: 100vh;
+}
+
+.heading {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+
+  i {
+    font-size: 3rem;
+    color: #842be2;
+    text-shadow: 0 0 15px rgba(132, 43, 226, 0.4);
+  }
+
+  span {
+    color: #b46eff;
+    text-shadow: 0 0 30px rgba(132, 43, 226, 0.3);
+    background: linear-gradient(90deg, #a78bfa, #c084fc, #e879f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1050px;
+}
+
+.imageContainer {
+  flex: 1 1 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    background: radial-gradient(circle, rgba(132, 43, 226, 0.15) 0%, transparent 70%);
+    z-index: -1;
+  }
+}
+
+.floatWrapper {
+  animation: floatUpDown 6s ease-in-out infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.tiltWrapper {
+  perspective: 1000px;
+  position: relative;
+  display: inline-flex;
+  border-radius: 2rem;
+  padding: 3px; /* gap for the animated border */
+  transform-style: preserve-3d;
+}
+
+.animatedBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  padding: 3px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1; /* Draw border above the edge but below image technically */
+}
+
+.animatedBorder::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(98, 0, 234, 0.7) 50%,
+    rgba(186, 104, 200, 0.6) 75%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: borderSpin 4s linear infinite;
+  transition: background-color 0.5s ease, background 0.5s ease;
+}
+
+.tiltWrapper:hover .animatedBorder::before {
+  background: conic-gradient(
+    from 0deg,
+    rgba(186, 104, 200, 0.8) 0%,
+    rgba(98, 0, 234, 0.9) 25%,
+    rgba(186, 104, 200, 0.8) 50%,
+    rgba(98, 0, 234, 0.9) 75%,
+    rgba(186, 104, 200, 0.8) 100%
+  );
+  animation: borderSpin 2s linear infinite; /* Spin slightly faster on hover */
+}
+
+@keyframes borderSpin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.tiltImage {
+  width: 100%;
+  max-width: 30rem;
+  border-radius: calc(2rem - 3px); /* Match container minus padding */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  filter: grayscale(100%) brightness(0.85); /* Black and white by default */
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    filter: grayscale(0%) brightness(1); /* Full color on hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(132, 43, 226, 0.4);
+  }
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.content {
+  flex: 1 1 45rem;
+
+  h3 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+
+  .tag {
+    font-size: 1.3rem;
+    color: #b46eff;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.32rem;
+    color: #dad8d8;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    font-family: inherit;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.resumeBtnWrapper {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .about {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .about {
+    padding: 6rem 5%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infoContainer {
+    justify-content: center;
+  }
+
+  .imageContainer {
+    margin-bottom: 1rem;
+  }
+}

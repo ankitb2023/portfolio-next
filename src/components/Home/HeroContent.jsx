@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import Link from 'next/link';
+import { AnimatedButton } from '../common/AnimatedButton';
 import styles from './HeroContent.module.scss';
 import { useTypewriter } from '../../customhook/useTypewriter';
 
@@ -28,12 +28,14 @@ export const HeroContent = () => {
           <span className={styles.cursor}>|</span>
         </span>
       </p>
-        <div className={styles.btnContainer}>
-          <div className={styles.btnAnimatedBorder}></div>
-          <Link href="#about" className={styles.btn} aria-label="About Me section">
-            <span>About Me</span> <i className="fas fa-arrow-circle-down" aria-hidden="true"></i>
-          </Link>
-        </div>
+        <AnimatedButton 
+          href="#about" 
+          iconClass="fas fa-arrow-circle-down" 
+          ariaLabel="About Me section"
+          containerClassName={styles.heroBtnSpacing}
+        >
+          About Me
+        </AnimatedButton>
       <nav className={styles.socials} aria-label="Social Links">
         <ul className={styles.socialIcons}>
           <li>
