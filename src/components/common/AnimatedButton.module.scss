@@ -1,0 +1,105 @@
+.btnContainer {
+  display: inline-flex;
+  position: relative;
+  border-radius: 50px;
+  padding: 1px;
+  z-index: 10;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btnAnimatedBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  padding: 1.5px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.btnAnimatedBorder::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 400%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 60%,
+    #00e5ff 85%, /* Neon Cyan */
+    #ff00aa 100% /* Neon Magenta */
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: borderSpin 4s linear infinite;
+}
+
+@keyframes borderSpin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.btnContainer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Conic gradient changes to white/cream on hover */
+.btnContainer:hover .btnAnimatedBorder::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 60%,
+    rgba(250, 248, 245, 0.8) 85%, /* Cream */
+    rgba(255, 255, 255, 1) 100%   /* White */
+  );
+}
+
+.btnContainer:hover .btn {
+  background: rgba(94, 28, 185, 0.95); /* Lighter vibrant purple */
+  color: #fff;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.btnContainer:hover i {
+  transform: translateY(3px);
+  color: #ffffff; /* White icon to match text */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.8rem;
+  border-radius: 48px; /* Inner bounding snap */
+  transition: all 0.4s ease;
+  color: #fff;
+  background: rgba(49, 27, 94, 0.95); /* Deep dark indigo/purple blend */
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.15); /* Top inner 3D glow */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: inherit;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.btn span {
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.btn i {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+  transition: all 0.4s ease;
+}
