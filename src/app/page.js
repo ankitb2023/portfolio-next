@@ -4,6 +4,7 @@ import { Skills } from "@/components/Skills";
 import { Education } from "@/components/Education";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
+import { Contact } from "@/components/Contact";
 
 export const metadata = {
   title: 'Portfolio | Home',
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Education />
       <Projects />
       <Experience />
+      <Contact />
     </main>
   );
 }
