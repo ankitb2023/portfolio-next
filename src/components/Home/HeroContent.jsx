@@ -28,7 +28,7 @@ export const HeroContent = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSectionIndex((prev) => (prev + 1) % ROTATING_SECTIONS.length);
-    }, 1000);
+    }, 1500);
     return () => clearInterval(interval);
   }, []);
 

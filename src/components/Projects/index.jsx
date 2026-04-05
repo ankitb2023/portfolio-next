@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { AnimatedButton } from '../common/AnimatedButton';
 import styles from './Projects.module.scss';
 
@@ -54,10 +53,98 @@ const projectsData = [
     imgSrc: '/images/projects/featured/tictactoe.png',
     viewLink: 'https://zerokatakhel.netlify.app/',
     codeLink: 'https://github.com/ankitb2023/tictacgame',
-  }
-]; // Initially mapping just the top 6 for the homepage dashboard
+  },
+  {
+    title: 'Guess the Number',
+    description:
+      "Let's check your Guessing ability.This is a game in which user has to predict the Hidden number.For each wrong guess,points will be deducted.",
+    imgSrc: '/images/projects/guessnumber.png',
+    viewLink: 'https://ankitbhujeja.github.io/GuessTheNumber/',
+    codeLink: 'https://github.com/ankitb2023/GuessTheNumber',
+  },
+  {
+    title: 'Portfolio 1.0',
+    description:
+      "Personal Portfolio Website.It's created using HTML,CSS,JavaScript,Bootstrap and little bit JQuery.",
+    imgSrc: '/images/projects/portfolio1.png',
+    viewLink: 'https://ankitbhujeja.github.io/Portfolio.github.o/',
+    codeLink: 'https://github.com/AnkitBhujeja/Portfolio.github.o',
+  },
+  {
+    title: 'SKDR Classes Template',
+    description:
+      "It's a website template for an online batch enrollment in an Coaching Institute.It is made up of HTML, CSS, JavaScript.",
+    imgSrc: '/images/projects/skdr.png',
+    viewLink: 'https://ankitbhujeja.github.io/skdrclasses.github.io/',
+    codeLink: 'https://github.com/AnkitBhujeja/skdrclasses.github.io',
+  },
+  {
+    title: 'Calculator',
+    description: "It's a Reactjs application used for basic computation.",
+    imgSrc: '/images/projects/calculator_d.png',
+    viewLink: 'https://ankitbhujeja.github.io/calculator_d/',
+    codeLink: 'https://github.com/ankitb2023/calculator_dark',
+  },
+  {
+    title: 'Box Office App',
+    description:
+      'To show Every movies and web shows details with casting details',
+    imgSrc: '/images/projects/boxofficedark.png',
+    viewLink: 'https://ankitbhujeja.github.io/box-office/',
+    codeLink: 'https://github.com/ankitb2023/box-office',
+  },
+  {
+    title: 'Animated Car',
+    description: "It's a website in which i earned about animations with CSS.",
+    imgSrc: '/images/projects/animatedcar.png',
+    viewLink: 'https://ankitbhujeja.github.io/AnimatedCarScene/',
+    codeLink: 'https://github.com/ankitb2023/AnimatedCarScene',
+  },
+  {
+    title: 'Virtual cricket game',
+    description:
+      "It's a Fun game to experience Cricket in command line. Coded in C++",
+    imgSrc: '/images/projects/scripts/cricket.png',
+    viewLink: '#',
+    codeLink: 'https://github.com/ankitb2023/VirtualCricketGame',
+  },
+  {
+    title: 'Rock Paper Scissor Game',
+    description:
+      'A command line Game where you will compete with Computer and Fight for a Win in rounds.Coded in Java',
+    imgSrc: '/images/projects/scripts/rock.png',
+    viewLink: '#',
+    codeLink: 'https://github.com/ankitb2023/rock-paper-scissor',
+  },
+  {
+    title: 'Report Card Generator',
+    description:
+      'Application takes Users input and generate the Report Card Formatted.',
+    imgSrc: '/images/projects/scripts/report.png',
+    viewLink: '#',
+    codeLink: 'https://github.com/AnkitBhujeja/reportCardGenerator',
+  },
+  {
+    title: 'Mini Virtual cricket Game',
+    description:
+      'It is a game where match is of 1 over. Updated version is Virtual cricket Game.',
+    imgSrc: '/images/projects/scripts/minicricket.png',
+    viewLink: '#',
+    codeLink: 'https://github.com/ankitb2023/miniCricketGame',
+  },
+  {
+    title: 'Food and drink',
+    description:
+      'Application take user order and Print the bill with discount applied if applicable.',
+    imgSrc: '/images/projects/scripts/python.png',
+    viewLink: '#',
+    codeLink: 'https://github.com/ankitb2023/python-files',
+  },
+];
 
-export const Projects = () => {
+export const Projects = ({ showAll = false }) => {
+  const displayedProjects = showAll ? projectsData : projectsData.slice(0, 6);
+
   return (
     <section className={styles.projects} id="work">
       <h2 className={styles.heading}>
@@ -65,7 +152,7 @@ export const Projects = () => {
       </h2>
       
       <div className={styles.grid}>
-        {projectsData.map((project, index) => (
+        {displayedProjects.map((project, index) => (
           <div className={styles.card} key={index}>
             <div className={styles.imageContainer}>
               <Image 
@@ -74,6 +161,7 @@ export const Projects = () => {
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'top' }}
                 draggable="false"
+                unoptimized
               />
             </div>
             
@@ -110,9 +198,15 @@ export const Projects = () => {
       </div>
       
       <div className={styles.viewAllContainer}>
-        <AnimatedButton href="#work" iconClass="fas fa-arrow-right" ariaLabel="View All Projects">
-          View All
-        </AnimatedButton>
+        {showAll ? (
+          <AnimatedButton href="/" iconClass="fas fa-arrow-left" ariaLabel="Back To Home">
+            Back To Home
+          </AnimatedButton>
+        ) : (
+          <AnimatedButton href="/projects" iconClass="fas fa-arrow-right" ariaLabel="View All Projects">
+            View All
+          </AnimatedButton>
+        )}
       </div>
     </section>
   );

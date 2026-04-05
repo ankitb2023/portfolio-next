@@ -61,10 +61,10 @@ const experienceData = [
   },
 ];
 
-export const Experience = () => {
+export const Experience = ({ showAll = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const miniExperienceData = experienceData.slice(0, 5);
+  const displayedExperienceData = showAll ? experienceData : experienceData.slice(0, 5);
 
   return (
     <section className={styles.experience} id="experience">
@@ -73,7 +73,7 @@ export const Experience = () => {
       </h2>
 
       <div className={styles.timeline}>
-        {miniExperienceData.map((exp, index) => {
+        {displayedExperienceData.map((exp, index) => {
           const isLeft = index % 2 === 0;
           const isActive = activeIndex === index;
 
@@ -109,9 +109,15 @@ export const Experience = () => {
       </div>
 
       <div className={styles.moreBtn}>
-        <AnimatedButton href="#experience" iconClass="fas fa-arrow-right" ariaLabel="View All Experience">
-          View All
-        </AnimatedButton>
+        {showAll ? (
+          <AnimatedButton href="/" iconClass="fas fa-arrow-left" ariaLabel="Back To Home">
+            Back To Home
+          </AnimatedButton>
+        ) : (
+          <AnimatedButton href="/experience" iconClass="fas fa-arrow-right" ariaLabel="View All Experience">
+            View All
+          </AnimatedButton>
+        )}
       </div>
     </section>
   );
