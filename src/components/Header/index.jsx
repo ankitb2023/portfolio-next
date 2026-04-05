@@ -4,16 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
-
-const navLinks = [
-  { id: "home", label: "Home", href: "/#home" },
-  { id: "about", label: "About", href: "/#about" },
-  { id: "skills", label: "Skills", href: "/#skills" },
-  { id: "education", label: "Education", href: "/#education" },
-  { id: "work", label: "Projects", href: "/#work" },
-  { id: "experience", label: "Experience", href: "/#experience" },
-  { id: "contact", label: "Contact", href: "/#contact" },
-];
+import { sectionQuickLinks } from '@/data/layout/common';
 
 export const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -85,7 +76,7 @@ export const Header = () => {
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
           <ul className={styles.navList}>
-            {navLinks.map((link) => (
+            {sectionQuickLinks.map((link) => (
               <li key={link.id}>
                 <Link
                   href={link.href}

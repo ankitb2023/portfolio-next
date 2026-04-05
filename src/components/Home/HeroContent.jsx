@@ -1,25 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatedButton } from '../common/AnimatedButton';
 import styles from './HeroContent.module.scss';
 import { useTypewriter } from '../../customhook/useTypewriter';
-
-const SCROLLING_SKILLS = [
-  "Problem Solving (DSA)",
-  "Frontend Engineering (React)",
-  "SSR & Performance (Next.js)",
-  "Backend APIs (Spring Boot)",
-  "Scalable System Design"
-];
-
-const ROTATING_SECTIONS = [
-  { id: 'about', label: 'About Me' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'work', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Education' },
-  { id: 'contact', label: 'Contact' }
-];
+import { ROTATING_SECTIONS, SCROLLING_SKILLS } from '@/data/home';
+import { socialLinks } from '@/data/layout/common';
 
 export const HeroContent = () => {
   const typedText = useTypewriter(SCROLLING_SKILLS);
@@ -28,7 +13,7 @@ export const HeroContent = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSectionIndex((prev) => (prev + 1) % ROTATING_SECTIONS.length);
-    }, 1500);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -72,36 +57,14 @@ export const HeroContent = () => {
       </AnimatedButton>
       <nav className={styles.socials} aria-label="Social Links">
         <ul className={styles.socialIcons}>
-          <li>
-            <a className={styles.socialIcon} href="https://www.linkedin.com/in/ankit-bhujeja/" target="_blank" rel="noopener noreferrer">
-              <span className={styles.iconWrapper}><i className="fab fa-linkedin" aria-hidden="true"></i></span>
-              <span className={styles.socialName}>LinkedIn</span>
-            </a>
-          </li>
-          <li>
-            <a className={styles.socialIcon} href="https://github.com/AnkitBhujeja" target="_blank" rel="noopener noreferrer">
-              <span className={styles.iconWrapper}><i className="fab fa-github" aria-hidden="true"></i></span>
-              <span className={styles.socialName}>GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a className={styles.socialIcon} href="mailto:ankitbhujeja2468@gmail.com" target="_blank" rel="noopener noreferrer">
-              <span className={styles.iconWrapper}><i className="fas fa-envelope" aria-hidden="true"></i></span>
-              <span className={styles.socialName}>Email</span>
-            </a>
-          </li>
-          <li>
-            <a className={styles.socialIcon} href="https://t.me/abhujeja" target="_blank" rel="noopener noreferrer">
-              <span className={styles.iconWrapper}><i className="fab fa-telegram-plane" aria-hidden="true"></i></span>
-              <span className={styles.socialName}>Telegram</span>
-            </a>
-          </li>
-          <li>
-            <a className={styles.socialIcon} href="https://www.instagram.com/ankit_bhujeja" target="_blank" rel="noopener noreferrer">
-              <span className={styles.iconWrapper}><i className="fab fa-instagram" aria-hidden="true"></i></span>
-              <span className={styles.socialName}>Instagram</span>
-            </a>
-          </li>
+          {socialLinks.map((link) => (
+            <li key={link.id}>
+              <a className={styles.socialIcon} href={link.href} target="_blank" rel="noopener noreferrer">
+                <span className={styles.iconWrapper}><i className={link.icon} aria-hidden="true"></i></span>
+                <span className={styles.socialName}>{link.name}</span>
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </article>

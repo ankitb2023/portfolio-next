@@ -5,27 +5,7 @@ import { useToast } from '@/context/ToastContext';
 import { submitContactForm } from '@/app/actions/contact';
 import { ContactInfoCard } from '@/components/common/ContactInfoCard';
 import styles from './Contact.module.scss';
-
-const contactLinks = [
-  {
-    href: 'mailto:ankitbhujeja@gmail.com?subject=Hi&body=Hello%20Ankit,',
-    iconClass: 'fas fa-envelope',
-    label: 'Email',
-    value: 'ankitbhujeja@gmail.com',
-  },
-  {
-    href: 'https://www.google.com/maps/place/Hansi,+Haryana,+India',
-    iconClass: 'fas fa-map-marker-alt',
-    label: 'Location',
-    value: 'Hansi, India',
-  },
-  {
-    href: 'https://www.linkedin.com/in/ankit-bhujeja/',
-    iconClass: 'fab fa-linkedin-in',
-    label: 'LinkedIn',
-    value: 'ankit-bhujeja',
-  },
-];
+import { contactLinks } from '@/data/contact';
 
 export const Contact = () => {
   const formRef = useRef(null);

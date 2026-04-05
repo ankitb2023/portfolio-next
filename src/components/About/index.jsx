@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { AnimatedButton } from '../common/AnimatedButton';
 import { InfoCard } from '../common/InfoCard';
 import styles from './About.module.scss';
