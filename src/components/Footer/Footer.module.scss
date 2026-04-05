@@ -1,0 +1,229 @@
+.footer {
+  width: 100%;
+  padding: 3rem 2rem 2rem;
+  border-top: 1px solid rgba(139, 92, 246, 0.15);
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-top: 4rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+  padding-bottom: 2rem;
+}
+
+.box {
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #e5e5e5;
+    background: linear-gradient(to right, #ffffff, #b46eff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    font-size: 1.3rem;
+    color: rgba(229, 229, 229, 0.6);
+    line-height: 1.8;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.3rem;
+    color: rgba(229, 229, 229, 0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    text-align: left;
+    width: fit-content;
+
+    i {
+      color: rgba(180, 110, 255, 0.5);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      color: #b46eff;
+      transform: translateX(5px);
+      
+      i {
+        color: #b46eff;
+      }
+    }
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.3rem;
+    color: rgba(229, 229, 229, 0.6);
+
+    i {
+      color: rgba(180, 110, 255, 0.6);
+      font-size: 1.4rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    a {
+      color: rgba(229, 229, 229, 0.6);
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #b46eff;
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 1.2rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    color: #e5e5e5;
+    font-size: 1.4rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+    
+    &.linkedin:hover {
+       background: rgba(0, 119, 181, 0.2);
+       border-color: #0077b5;
+       color: #0077b5;
+       box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+    }
+    
+    &.github:hover {
+       background: rgba(255, 255, 255, 0.1);
+       border-color: #ffffff;
+       color: #ffffff;
+       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+    
+    &.email:hover {
+       background: rgba(234, 67, 53, 0.2);
+       border-color: #ea4335;
+       color: #ea4335;
+       box-shadow: 0 5px 15px rgba(234, 67, 53, 0.4);
+    }
+    
+    &.whatsapp:hover {
+       background: rgba(37, 211, 102, 0.2);
+       border-color: #25D366;
+       color: #25D366;
+       box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    }
+    
+    &.telegram:hover {
+       background: rgba(0, 136, 204, 0.2);
+       border-color: #0088cc;
+       color: #0088cc;
+       box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+    }
+  }
+}
+
+.credit {
+  text-align: center;
+  padding-top: 3rem;
+  
+  p {
+    font-size: 1.3rem;
+    color: rgba(229, 229, 229, 0.6);
+
+    i.pulse {
+      color: #ff3366;
+      animation: heartPulse 1.5s infinite;
+      margin: 0 0.4rem;
+    }
+
+    a {
+      color: #b46eff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(180, 110, 255, 0.6);
+      }
+    }
+  }
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.25); }
+  60% { transform: scale(1); }
+}
+
+@media(max-width: 1024px) {
+  .footer {
+    padding: 6rem 60px 2rem;
+  }
+}
+
+@media(max-width: 768px) {
+  .footer {
+    padding: 5rem 40px 2rem;
+  }
+  .container {
+    gap: 3rem;
+  }
+}
+
+@media(max-width: 450px) {
+  .footer {
+    padding: 4rem 20px 2rem;
+  }
+  .box h3 {
+    font-size: 1.6rem;
+  }
+  .box p, .links button, .contactInfo p, .credit p {
+    font-size: 1.2rem;
+  }
+}
