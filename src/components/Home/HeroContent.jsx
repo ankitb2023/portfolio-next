@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatedButton } from '../common/AnimatedButton';
 import styles from './HeroContent.module.scss';
 import { useTypewriter } from '../../customhook/useTypewriter';
@@ -12,8 +12,37 @@ const SCROLLING_SKILLS = [
   "Scalable System Design"
 ];
 
+const ROTATING_SECTIONS = [
+  { id: 'about', label: 'About Me' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'work', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
+  { id: 'contact', label: 'Contact' }
+];
+
 export const HeroContent = () => {
   const typedText = useTypewriter(SCROLLING_SKILLS);
+  const [sectionIndex, setSectionIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSectionIndex((prev) => (prev + 1) % ROTATING_SECTIONS.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentSection = ROTATING_SECTIONS[sectionIndex];
+
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
     <article className={styles.content}>
@@ -28,14 +57,19 @@ export const HeroContent = () => {
           <span className={styles.cursor}>|</span>
         </span>
       </p>
-        <AnimatedButton 
-          href="#about" 
-          iconClass="fas fa-arrow-circle-down" 
-          ariaLabel="About Me section"
-          containerClassName={styles.heroBtnSpacing}
-        >
-          About Me
-        </AnimatedButton>
+      <AnimatedButton
+        href={`#${currentSection.id}`}
+        onClick={(e) => handleScroll(e, currentSection.id)}
+        iconClass="fas fa-arrow-circle-down"
+        ariaLabel={`${currentSection.label} section`}
+        containerClassName={styles.heroBtnSpacing}
+      >
+        <span className={styles.rotatingTextContainer}>
+          <span key={currentSection.id} className={styles.rotatingText}>
+            {currentSection.label}
+          </span>
+        </span>
+      </AnimatedButton>
       <nav className={styles.socials} aria-label="Social Links">
         <ul className={styles.socialIcons}>
           <li>

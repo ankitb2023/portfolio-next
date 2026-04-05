@@ -205,3 +205,27 @@
     font-size: 1.8rem;
   }
 }
+
+.rotatingTextContainer {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: text-bottom;
+  position: relative;
+  align-items: center;
+}
+
+.rotatingText {
+  display: inline-block;
+  animation: txtSlideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes txtSlideUp {
+  0% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
