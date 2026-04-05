@@ -2,6 +2,7 @@ import { Home } from "@/components/Home";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Education } from "@/components/Education";
+import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Skills />
       <Education />
       <Projects />
+      <Experience />
     </main>
   );
 }
