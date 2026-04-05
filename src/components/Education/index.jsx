@@ -29,7 +29,7 @@ export const Education = () => {
   return (
     <section className={styles.education} id="education">
       <h2 className={styles.heading}>
-        <i className="fas fa-graduation-cap" aria-hidden="true"></i> My <span>Education</span>
+        <i className="fas fa-graduation-cap" aria-hidden="true"></i> Acadmeic <span>Journey</span>
       </h2>
       <p className={styles.quote}>
         "Education is not the learning of facts, but the training of the mind to think."
