@@ -1,5 +1,6 @@
 'use client';
 
+import { LINKEDIN_URL } from '@/constants/constants';
 import styles from './Footer.module.scss';
 import { sectionQuickLinks, footerContactInfo, socialLinks } from '@/data/layout/common';
 
@@ -20,8 +21,7 @@ export const Footer = () => {
         <div className={styles.box}>
           <h3>Ankit&apos;s Portfolio</h3>
           <p>
-            Thank you for visiting my personal portfolio website. Connect with
-            me over socials.
+            Thanks for stopping by! <br/>Let’s connect and build something amazing together.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export const Footer = () => {
       <div className={styles.credit}>
         <p>
           Designed with <i className="fa fa-heart" aria-hidden="true" style={{ color: '#ff3366' }}></i> by{' '}
-          <a href="https://www.linkedin.com/in/ankit-bhujeja/" target="_blank" rel="noopener noreferrer">
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
             Ankit Bhujeja
           </a>
         </p>

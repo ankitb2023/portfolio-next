@@ -2,7 +2,7 @@ export const projectsData = [
   {
     title: 'Portfolio Website',
     description:
-      "Personal portfolio website. Don't need much info about it, just scroll down. You're here only!",
+      "A sleek and responsive personal portfolio built with React, showcasing my projects, skills, and development journey.",
     imgSrc: '/images/projects/featured/portfolio.png',
     viewLink: 'https://abhujeja.netlify.app/',
     codeLink: 'https://github.com/ankitb2023/abhujeja',
@@ -10,7 +10,7 @@ export const projectsData = [
   {
     title: 'Technova',
     description:
-      'Website for Annual Technical Fest of DCRUST, Murthal. Over 3000 Registrations through it.',
+      'Developed the official website for the annual technical fest of DCRUST, Murthal, handling over 1300+ registrations.',
     imgSrc: '/images/projects/featured/technova.png',
     viewLink: 'https://technova22-f21f2.web.app/',
     codeLink: 'https://github.com/Technova22/Technova2k22',
@@ -18,7 +18,7 @@ export const projectsData = [
   {
     title: 'Chat Application',
     description:
-      'A react application built for chatting. Login with Google or Facebook & enjoy chatting with many features.',
+      'A real-time chat application built with React, featuring authentication via Google and Facebook.',
     imgSrc: '/images/projects/featured/chat.png',
     viewLink: 'https://chat-app-dabb6.web.app/signin',
     codeLink: 'https://github.com/ankitb2023/Chat-app',
@@ -26,7 +26,7 @@ export const projectsData = [
   {
     title: 'Weather App',
     description:
-      'Check the weather status of a city by entering its name or pincode.',
+      'A React-based weather application that provides real-time weather updates using city name or pincode, with a simple and intuitive interface.',
     imgSrc: '/images/projects/featured/weather.png',
     viewLink: 'https://bhujejaweatherapp.netlify.app/',
     codeLink: 'https://github.com/ankitb2023/Weather-App',
@@ -34,7 +34,7 @@ export const projectsData = [
   {
     title: 'Box-office',
     description:
-      'Shows details about movies and web series, including predictions for upcoming seasons.',
+      'A web application that displays detailed information about movies and web series, including insights and predictions for upcoming seasons.',
     imgSrc: '/images/projects/featured/boxoffice.png',
     viewLink: 'https://ankitbhujeja.github.io/box-office-lighttheme/',
     codeLink: 'https://github.com/ankitb2023/box-office-lighttheme',
@@ -42,7 +42,7 @@ export const projectsData = [
   {
     title: 'Tic Tac Toe Game',
     description:
-      'A Classic game created with React.js featuring history of moves and an animated winner display.',
+      'A classic Tic Tac Toe game built with React, featuring move history tracking and an animated winner display for an enhanced user experience.',
     imgSrc: '/images/projects/featured/tictactoe.png',
     viewLink: 'https://zerokatakhel.netlify.app/',
     codeLink: 'https://github.com/ankitb2023/tictacgame',
@@ -50,7 +50,7 @@ export const projectsData = [
   {
     title: 'Guess the Number',
     description:
-      "Let's check your Guessing ability.This is a game in which user has to predict the Hidden number.For each wrong guess,points will be deducted.",
+      "A classic number guessing game built with React, featuring move history tracking and an animated winner display for an enhanced user experience.",
     imgSrc: '/images/projects/guessnumber.png',
     viewLink: 'https://ankitbhujeja.github.io/GuessTheNumber/',
     codeLink: 'https://github.com/ankitb2023/GuessTheNumber',
@@ -58,7 +58,7 @@ export const projectsData = [
   {
     title: 'Portfolio 1.0',
     description:
-      "Personal Portfolio Website.It's created using HTML,CSS,JavaScript,Bootstrap and little bit JQuery.",
+      "A responsive personal portfolio website built using HTML, CSS, JavaScript, Bootstrap, and a touch of jQuery, showcasing my projects, skills, and development journey.",
     imgSrc: '/images/projects/portfolio1.png',
     viewLink: 'https://ankitbhujeja.github.io/Portfolio.github.o/',
     codeLink: 'https://github.com/AnkitBhujeja/Portfolio.github.o',
@@ -66,14 +66,14 @@ export const projectsData = [
   {
     title: 'SKDR Classes Template',
     description:
-      "It's a website template for an online batch enrollment in an Coaching Institute.It is made up of HTML, CSS, JavaScript.",
+      "A responsive website template for an online batch enrollment in a coaching institute, built with HTML, CSS, and JavaScript.",
     imgSrc: '/images/projects/skdr.png',
     viewLink: 'https://ankitbhujeja.github.io/skdrclasses.github.io/',
     codeLink: 'https://github.com/AnkitBhujeja/skdrclasses.github.io',
   },
   {
     title: 'Calculator',
-    description: "It's a Reactjs application used for basic computation.",
+    description: "A Reactjs application used for basic computation.",
     imgSrc: '/images/projects/calculator_d.png',
     viewLink: 'https://ankitbhujeja.github.io/calculator_d/',
     codeLink: 'https://github.com/ankitb2023/calculator_dark',
@@ -81,14 +81,14 @@ export const projectsData = [
   {
     title: 'Box Office App',
     description:
-      'To show Every movies and web shows details with casting details',
+      'A web application that displays detailed information about movies and web series, including insights and predictions for upcoming seasons.',
     imgSrc: '/images/projects/boxofficedark.png',
     viewLink: 'https://ankitbhujeja.github.io/box-office/',
     codeLink: 'https://github.com/ankitb2023/box-office',
   },
   {
     title: 'Animated Car',
-    description: "It's a website in which i earned about animations with CSS.",
+    description: "A visually engaging project that demonstrates advanced CSS animations and transitions.",
     imgSrc: '/images/projects/animatedcar.png',
     viewLink: 'https://ankitbhujeja.github.io/AnimatedCarScene/',
     codeLink: 'https://github.com/ankitb2023/AnimatedCarScene',
@@ -96,7 +96,7 @@ export const projectsData = [
   {
     title: 'Virtual cricket game',
     description:
-      "It's a Fun game to experience Cricket in command line. Coded in C++",
+      "A fun command-line cricket game built with C++, offering an immersive experience of the sport in a text-based environment.",
     imgSrc: '/images/projects/scripts/cricket.png',
     viewLink: '#',
     codeLink: 'https://github.com/ankitb2023/VirtualCricketGame',
@@ -104,7 +104,7 @@ export const projectsData = [
   {
     title: 'Rock Paper Scissor Game',
     description:
-      'A command line Game where you will compete with Computer and Fight for a Win in rounds.Coded in Java',
+      'A command line Rock Paper Scissor game built with Java, offering an immersive experience of the sport in a text-based environment.',
     imgSrc: '/images/projects/scripts/rock.png',
     viewLink: '#',
     codeLink: 'https://github.com/ankitb2023/rock-paper-scissor',
@@ -112,7 +112,7 @@ export const projectsData = [
   {
     title: 'Report Card Generator',
     description:
-      'Application takes Users input and generate the Report Card Formatted.',
+      'A command line Report Card Generator built with Java, offering an immersive experience of the sport in a text-based environment.',
     imgSrc: '/images/projects/scripts/report.png',
     viewLink: '#',
     codeLink: 'https://github.com/AnkitBhujeja/reportCardGenerator',
@@ -120,7 +120,7 @@ export const projectsData = [
   {
     title: 'Mini Virtual cricket Game',
     description:
-      'It is a game where match is of 1 over. Updated version is Virtual cricket Game.',
+      'A command line Mini Virtual cricket Game built with C++, offering an immersive experience of the sport in a text-based environment.',
     imgSrc: '/images/projects/scripts/minicricket.png',
     viewLink: '#',
     codeLink: 'https://github.com/ankitb2023/miniCricketGame',
@@ -128,7 +128,7 @@ export const projectsData = [
   {
     title: 'Food and drink',
     description:
-      'Application take user order and Print the bill with discount applied if applicable.',
+      'A command line Food and drink application built with Python, offering an immersive experience of the sport in a text-based environment.',
     imgSrc: '/images/projects/scripts/python.png',
     viewLink: '#',
     codeLink: 'https://github.com/ankitb2023/python-files',

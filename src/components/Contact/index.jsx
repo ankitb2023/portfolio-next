@@ -43,9 +43,9 @@ export const Contact = () => {
         {/* ── Left Info Panel ── */}
         <div className={styles.infoPanel}>
           <div className={styles.infoTitle}>
-            <h3>Let&apos;s work together</h3>
+            <h3>Turn ideas into reality</h3>
             <p>
-              Have a project in mind or want to collaborate? Feel free to reach out. I&apos;m always open to discussing new ideas.
+              Have a project in mind or want to collaborate? <br/>Let’s connect and bring your ideas to life.
             </p>
           </div>
 

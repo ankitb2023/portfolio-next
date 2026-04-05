@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { AnimatedButton } from '../common/AnimatedButton';
 import { InfoCard } from '../common/InfoCard';
 import styles from './About.module.scss';
+import { EMAIL, LOCATION_URL, MAIL_TO_URL, PLACE } from '@/constants/constants';
 
 export const About = () => {
     const [tiltStyle, setTiltStyle] = useState({});
@@ -33,6 +34,19 @@ export const About = () => {
             transition: 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         });
     };
+    const experience = useMemo(() => {
+        const start = new Date(2023, 1);
+        const now = new Date();
+        let years = now.getFullYear() - start.getFullYear();
+        let months = now.getMonth() - start.getMonth();
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+        const decimal = Math.floor((months / 12) * 10);
+        return `${years}.${decimal} years`;
+    }, []);
+
     return (
         <section className={styles.about} id="about">
             <h2 className={styles.heading}>
@@ -65,35 +79,36 @@ export const About = () => {
                 <div className={styles.content}>
                     <h3>I'm Ankit</h3>
                     <span className={styles.tag}>
-                        Software Engineer | Full Stack Web Developer
+                        Senior Software Engineer | Full Stack Developer
                     </span>
                     <p>
-                        I am a Software Engineer with over 1.5 years of experience in building scalable full-stack
-                        applications. I specialize in Core Java, Spring Boot, and ReactJS, with a heavy focus on
-                        modernizing legacy architectures and optimizing performance ecosystems.
-                        <br />
-                        <br />
-                        Throughout my journey, I have successfully optimized complex API integrations and enhanced
-                        observability using Elasticsearch and Kibana. I am passionate about driving innovation through
-                        automated workflows and delivering high-performance, resilient solutions in fast-paced environments.
-                        <br />
-                        <br />
-                        I excel at translating complex business requirements into elegant technical solutions, focusing
-                        on clean code and best practices that scale with the needs of the users.
+                        I am a Senior Software Engineer with {experience} of experience building scalable, high-performance full-stack applications.
+                        I specialize in Java, Spring Boot, React, and Next.js, with strong foundations in Data Structures, System Design, and modern web architecture.
+                        <br /><br />
+
+                        Currently working at Naukri, I have contributed to solving complex real-world problems.
+                        My work involves designing efficient APIs, optimizing performance, and improving system reliability through better monitoring, tracking, and observability.
+                        <br /><br />
+
+                        {/* I have hands-on experience in integrating payment gateways, building modular and maintainable codebases, and developing robust end-to-end solutions across the stack, including Node.js services where needed.
+                        <br /><br /> */}
+
+                        Beyond work, I am deeply passionate about problem-solving, having solved 450+ problems on LeetCode, which strengthens my ability to write efficient and optimized code.
+                        I focus on clean architecture, scalability, and delivering impactful solutions that align with business goals.
                     </p>
 
                     <div className={styles.infoContainer}>
                         <InfoCard
                             label="Email"
-                            value="ankitbhujeja2468@gmail.com"
+                            value={EMAIL}
                             iconClass="fas fa-envelope"
-                            href="mailto:ankitbhujeja2468@gmail.com?subject=Hi%20Ankit"
+                            href={MAIL_TO_URL}
                         />
                         <InfoCard
                             label="Place"
-                            value="Haryana, India - 125033"
+                            value={PLACE}
                             iconClass="fas fa-map-marker-alt"
-                            href="https://www.google.com/maps/place/Hansi,+Haryana+125033,+India"
+                            href={LOCATION_URL}
                         />
                     </div>
 
