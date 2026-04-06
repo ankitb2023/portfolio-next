@@ -49,10 +49,12 @@ export const Contact = () => {
             </p>
           </div>
 
-          <div className={styles.infoItems}>
-            {contactLinks.map((link, i) => (
-              <ContactInfoCard key={i} {...link} />
-            ))}
+          <div className={styles.cardScrollWrapper}>
+            <div className={styles.infoItems}>
+              {contactLinks.map((link, i) => (
+                <ContactInfoCard key={i} {...link} />
+              ))}
+            </div>
           </div>
         </div>
 

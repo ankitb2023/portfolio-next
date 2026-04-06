@@ -1,17 +1,13 @@
 'use client';
 
 import { LINKEDIN_URL } from '@/constants/constants';
+import { smoothScrollTo } from '@/utils/scroll';
 import styles from './Footer.module.scss';
 import { sectionQuickLinks, footerContactInfo, socialLinks } from '@/data/layout/common';
 
 export const Footer = () => {
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    smoothScrollTo(id);
   };
 
   return (

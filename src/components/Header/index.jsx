@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
+import { smoothScrollTo } from '@/utils/scroll';
 import { sectionQuickLinks } from '@/data/layout/common';
 
 export const Header = () => {
@@ -47,13 +48,10 @@ export const Header = () => {
     if (pathname === "/") {
       e.preventDefault();
       setMenuOpen(false);
-      const element = document.getElementById(id);
-      if (element) {
-         const yOffset = -80; // height of navbar
-         const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-         window.scrollTo({ top: y, behavior: 'smooth' });
-      } else if (id === 'home') {
+      if (id === 'home') {
          window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+         smoothScrollTo(id);
       }
     } else {
       setMenuOpen(false);

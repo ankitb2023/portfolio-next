@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { smoothScrollTo } from '@/utils/scroll';
 import { AnimatedButton } from '../common/AnimatedButton';
 import styles from './HeroContent.module.scss';
 import { useTypewriter } from '../../customhook/useTypewriter';
@@ -21,12 +22,7 @@ export const HeroContent = () => {
 
   const handleScroll = (e, id) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    smoothScrollTo(id);
   };
 
   return (

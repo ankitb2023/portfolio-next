@@ -151,12 +151,27 @@
 }
 
 @media(max-width: 1024px) {
+  .heading {
+    font-size: 2.8rem;
+    gap: 1rem;
+    i { font-size: 2.4rem; }
+  }
   .education {
     padding: 60px 60px;
   }
 }
 
 @media(max-width: 768px) {
+  .heading {
+    font-size: 2.4rem;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    i { font-size: 2rem; }
+  }
+  .quote {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
   .education {
     padding: 60px 40px;
   }
@@ -175,14 +190,28 @@
   }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 480px) {
+  .heading {
+    font-size: 2rem;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    i { font-size: 1.6rem; }
+  }
+  .quote {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
   .education {
-    padding: 40px 20px;
+    min-height: auto; /* Remove 100vh forcing on mobile */
+    padding: 40px 16px;
+    margin-top: 0;
   }
   .content {
     padding: 1.5rem 1.2rem;
     
     h3 { font-size: 1.5rem; }
+    p { font-size: 1.2rem; }
+    h4 { font-size: 1.2rem; padding: 0.5rem 1.2rem; }
   }
   .image { min-height: 180px; }
 }

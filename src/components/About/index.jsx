@@ -71,6 +71,7 @@ export const About = () => {
                                 className={styles.tiltImage}
                                 draggable={false}
                                 priority
+                                style={{ objectFit: 'cover', objectPosition: 'top center' }}
                             />
                         </div>
                     </div>

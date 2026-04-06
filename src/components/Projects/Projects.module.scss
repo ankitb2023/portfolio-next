@@ -7,7 +7,6 @@
   background: transparent;
   position: relative;
   z-index: 10;
-  // margin-top: 8rem;
 }
 
 .heading {
@@ -277,12 +276,24 @@
 }
 
 @media(max-width: 1024px) {
+  .heading {
+    font-size: 2.8rem;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    i { font-size: 2.4rem; }
+  }
   .projects {
     padding: 60px 60px;
   }
 }
 
 @media(max-width: 768px) {
+  .heading {
+    font-size: 2.4rem;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    i { font-size: 2rem; }
+  }
   .projects {
     padding: 60px 40px;
   }
@@ -292,9 +303,16 @@
   }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 480px) {
+  .heading {
+    font-size: 2rem;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    i { font-size: 1.6rem; }
+  }
   .projects {
-    padding: 40px 20px;
+    min-height: auto; /* Remove 100vh forcing on mobile */
+    padding: 40px 16px;
   }
 
   .card {
