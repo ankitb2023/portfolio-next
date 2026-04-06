@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { smoothScrollTo } from '@/utils/scroll';
 import { sectionQuickLinks } from '@/data/layout/common';
+import { ThemeToggle } from '../common/ThemeToggle';
 
 export const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -65,13 +66,7 @@ export const Header = () => {
           <i className="fab fa-angular" aria-hidden="true"></i> Ankit
         </Link>
         
-        <div 
-          className={`${styles.menuBtn} ${menuOpen ? styles.open : ""}`} 
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <div className={styles.burgerPanel}></div>
-        </div>
-
+        
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
           <ul className={styles.navList}>
             {sectionQuickLinks.map((link) => (
@@ -89,6 +84,16 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
+
+        <div className={styles.actions}>
+          <ThemeToggle />
+          <div 
+            className={`${styles.menuBtn} ${menuOpen ? styles.open : ""}`} 
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <div className={styles.burgerPanel}></div>
+          </div>
+        </div>
       </div>
     </header>
   );
