@@ -62,7 +62,7 @@
   width: 100%;
   max-width: 480px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 0 auto;
   margin-bottom: 200px; /* Space for the scattered nodes underneath */
@@ -108,25 +108,41 @@
   }
 }
 
+/* ─── Tablet ─── */
 @media(max-width: 768px) {
   .home {
-    padding: 100px 30px 50px;
+    padding: 100px 24px 0px;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
   }
+
+  /* Hero text FIRST on mobile/tablet */
   .image {
+    order: 2;
+    width: 100%;
+    flex: 0 0 auto;
     text-align: center;
-    flex: 1 1 35rem;
-    order: 1; 
   }
+
   .graphicContainer {
-    max-width: 320px;
+    max-width: 360px;
+    margin-bottom: 200px; /* Restored space at the bottom for scattered skills */
+    overflow: visible;
   }
 }
 
-@media(max-width: 450px) {
+/* ─── Mobile ─── */
+@media(max-width: 480px) {
   .home {
-    padding: 80px 20px 40px;
+    padding: 100px 0px 0px !important;
+    min-height: auto;
   }
+
   .graphicContainer {
-    max-width: 280px;
+    max-width: 320px;
+    margin-bottom: 180px; /* Ensure nodes are not cut off by the edge of screen */
   }
 }

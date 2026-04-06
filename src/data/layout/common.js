@@ -17,7 +17,7 @@ export const socialLinks = [
   { id: 'github', name: 'GitHub', icon: 'fab fa-github', href: GITHUB_URL, className: 'github' },
   { id: 'email', name: 'Email', icon: 'fas fa-envelope', href: MAIL_TO_URL, className: 'email' },
   { id: 'whatsapp', name: 'WhatsApp', icon: 'fab fa-whatsapp', href: WHATSAPP_URL, className: 'whatsapp' },
-  { id: 'telegram', name: 'Telegram', icon: 'fab fa-telegram-plane', href: TELEGRAM_URL, className: 'telegram' },
+  // { id: 'telegram', name: 'Telegram', icon: 'fab fa-telegram-plane', href: TELEGRAM_URL, className: 'telegram' },
   { id: 'instagram', name: 'Instagram', icon: 'fab fa-instagram', href: INSTAGRAM_URL, className: 'instagram' },
 ];
 

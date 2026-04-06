@@ -185,3 +185,6 @@ html::-webkit-scrollbar-thumb{
   }
 }
 /* common media queries ends*/
+:root{
+  --section-margin-top: 7rem;
+}

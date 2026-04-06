@@ -295,7 +295,9 @@
     i { font-size: 2rem; }
   }
   .projects {
-    padding: 60px 40px;
+    padding: 0px 24px;
+    min-height: auto;
+    margin-top: var(--section-margin-top);
   }
 
   .grid {
@@ -311,8 +313,9 @@
     i { font-size: 1.6rem; }
   }
   .projects {
-    min-height: auto; /* Remove 100vh forcing on mobile */
-    padding: 40px 16px;
+    min-height: auto;
+    padding: 0px 16px;
+    margin-top: var(--section-margin-top);
   }
 
   .card {

@@ -173,7 +173,9 @@
     margin-bottom: 3rem;
   }
   .education {
-    padding: 60px 40px;
+    padding: 0px 24px;
+    min-height: auto;
+    margin-top: var(--section-margin-top);
   }
   .box {
     flex-direction: column;
@@ -202,9 +204,9 @@
     margin-bottom: 2.5rem;
   }
   .education {
-    min-height: auto; /* Remove 100vh forcing on mobile */
-    padding: 40px 16px;
-    margin-top: 0;
+    min-height: auto;
+    padding: 0px 16px;
+    margin-top: var(--section-margin-top);
   }
   .content {
     padding: 1.5rem 1.2rem;

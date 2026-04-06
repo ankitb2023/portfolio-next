@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './TerminalCard.module.scss';
 
 const terminalLines = [
@@ -73,6 +73,24 @@ TypewriterContent.displayName = 'TypewriterContent';
 
 export const TerminalCard = () => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleComplete = useCallback((idx) => {
     setCurrentLineIndex(prev => {
@@ -82,7 +100,7 @@ export const TerminalCard = () => {
   }, []);
 
   return (
-    <div className={styles.terminalContainer}>
+    <div className={styles.terminalContainer} ref={containerRef}>
       <div className={styles.animatedBorder}></div>
       <div className={styles.editorCard}>
         <div className={styles.editorHeader}>
@@ -93,9 +111,14 @@ export const TerminalCard = () => {
         <div className={styles.editorBody}>
           <code>
             {terminalLines.map((line, idx) => {
-              const isFuture = idx > currentLineIndex;
-              const isCurrent = idx === currentLineIndex;
+              let isFuture = idx > currentLineIndex;
+              let isCurrent = idx === currentLineIndex;
               const isPast = idx < currentLineIndex;
+
+              if (!isVisible && isCurrent) {
+                isCurrent = false;
+                isFuture = true;
+              }
 
               if (line.type === 'delay') {
                 if (isCurrent) {

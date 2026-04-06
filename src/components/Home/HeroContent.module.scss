@@ -165,44 +165,97 @@
   }
 }
 
+/* ─── Tablet ─── */
 @media(max-width: 768px) {
   .content {
-    order: 2;
+    order: 1; /* Hero text appears FIRST, above card */
     text-align: center;
+    padding-top: 0;
+    width: 100%;
+    flex: 0 0 auto;
+    margin-bottom: 4rem;
   }
 
   .content h3 {
-    font-size: 4rem;
+    font-size: 3.6rem;
   }
 
   .content h3 span {
-    font-size: 4rem;
-  }
-
-  .socialIcons {
-    justify-content: center;
-  }
-}
-
-@media(max-width: 450px) {
-  .heroBtnSpacing {
-    margin-top: 3rem;
-  }
-
-  .content {
-    margin-top: 20px;
-  }
-
-  .socials {
-    margin-top: 5rem;
+    font-size: 3.6rem;
   }
 
   .content p {
     font-size: 1.8rem;
+    padding: 1rem 0;
+  }
+
+  .socials {
+    margin-top: 2.5rem;
+  }
+
+  .socialIcons {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .socialIcon {
+    height: 44px;
+    max-width: 44px;
+  }
+
+  .iconWrapper {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+
+  .heroBtnSpacing {
+    margin-top: 1.5rem;
+  }
+}
+
+/* ─── Mobile ─── */
+@media(max-width: 480px) {
+  .content h3 {
+    font-size: 2.8rem;
+  }
+
+  .content h3 span {
+    font-size: 3rem;
+  }
+
+  .content p {
+    font-size: 1.6rem;
+    padding: 0.8rem 0;
   }
 
   .content p span.typingText {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+  }
+
+  .socials {
+    margin-top: 2rem;
+  }
+
+  .socialIcons {
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+  }
+
+  .socialIcon {
+    height: 38px;
+    max-width: 38px;
+    padding: 0 4px;
+  }
+
+  .iconWrapper {
+    width: 30px;
+    height: 30px;
+    font-size: 1.3rem;
+  }
+
+  .heroBtnSpacing {
+    margin-top: 1.2rem;
   }
 }
 

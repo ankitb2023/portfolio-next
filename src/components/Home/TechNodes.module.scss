@@ -108,6 +108,7 @@
   .posGit { left: 140px; }
 }
 
+/* ─── Tablet & Mobile Scattered Layout ─── */
 @media(max-width: 768px) {
   .techNode {
     padding: 6px 12px;
@@ -115,28 +116,32 @@
     border-radius: 30px;
     i { font-size: 1.5rem; }
   }
-  .posJs { bottom: -60px; left: -20px; }
-  .posReact { bottom: -110px; left: -10px; }
-  .posTs { bottom: -60px; left: 60px; }
-  .posNext { bottom: -110px; left: 90px; }
-  .posJava { bottom: -160px; left: 30px; }
-  .posSpring { bottom: -70px; left: 180px; }
-  .posDocker { bottom: -130px; left: 160px; }
-  .posGit { bottom: -180px; left: 100px; }
+  .posJs { bottom: -45px; left: 10px; }
+  .posTs { bottom: -50px; left: 120px; }
+  .posSpring { bottom: -40px; left: 240px; }
+
+  .posReact { bottom: -100px; left: 40px; }
+  .posDocker { bottom: -110px; left: 150px; }
+  .posNext { bottom: -95px; left: 260px; }
+
+  .posJava { bottom: -160px; left: 80px; }
+  .posGit { bottom: -150px; left: 200px; }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 480px) {
   .techNode {
     padding: 4px 10px;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     i { font-size: 1.2rem; }
   }
-  .posJs { bottom: -40px; left: -10px; }
-  .posReact { bottom: -80px; left: 0px; }
-  .posTs { bottom: -40px; left: 40px; }
-  .posNext { bottom: -80px; left: 60px; }
-  .posJava { bottom: -120px; left: 20px; }
-  .posSpring { bottom: -50px; left: 120px; }
-  .posDocker { bottom: -90px; left: 110px; }
-  .posGit { bottom: -130px; left: 70px; }
+  .posJs { bottom: -40px; left: 5px; }
+  .posTs { bottom: -52px; left: 110px; }
+  .posSpring { bottom: -35px; left: 210px; }
+
+  .posReact { bottom: -85px; left: 30px; }
+  .posDocker { bottom: -100px; left: 130px; }
+  .posNext { bottom: -80px; left: 220px; }
+
+  .posJava { bottom: -140px; left: 60px; }
+  .posGit { bottom: -135px; left: 170px; }
 }
