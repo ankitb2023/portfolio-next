@@ -18,18 +18,28 @@ export const ThemeToggle = () => {
   }
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    if (theme === "dark") setTheme("light");
+    else if (theme === "light") setTheme("system");
+    else setTheme("dark");
   };
+
+  const getIcon = () => {
+    if (theme === "dark") return "fas fa-moon";
+    if (theme === "light") return "fas fa-sun";
+    return "fas fa-desktop"; // System
+  };
+
+  const currentThemeClass = theme === "dark" ? styles.dark : theme === "light" ? styles.light : styles.system;
 
   return (
     <button
       onClick={toggleTheme}
       className={styles.themeToggle}
-      aria-label="Toggle Dark/Light Mode"
-      title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+      aria-label="Toggle Dark/Light/System Mode"
+      title={`Current: ${theme} - Click to switch`}
     >
-      <div className={`${styles.iconContainer} ${theme === "dark" ? styles.dark : styles.light}`}>
-        <i className={theme === "dark" ? "fas fa-moon" : "fas fa-sun"}></i>
+      <div className={`${styles.iconContainer} ${currentThemeClass}`}>
+        <i className={getIcon()}></i>
       </div>
     </button>
   );

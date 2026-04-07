@@ -9,7 +9,15 @@
   box-sizing: border-box;
   text-decoration: none;
   outline: none; border: none;
+}
+
+body.transitions-ready * {
   transition: all .2s linear;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 html{
   font-size: 62.5%;

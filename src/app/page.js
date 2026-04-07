@@ -9,12 +9,35 @@ import { Footer } from "@/components/Footer";
 
 export const metadata = {
   title: 'Portfolio | Home',
-  description: 'Welcome to my portfolio created with Next.js',
+  description: 'Welcome to my portfolio created with Next.js. Senior Frontend Engineer specializing in React, Next.js, and modern UI/UX.',
+  openGraph: {
+    title: 'Ankit Bhujeja | Portfolio',
+    description: 'Senior Frontend Engineer crafting beautiful and performant web applications.',
+    url: 'https://ankitbhujeja.com',
+    siteName: 'Ankit Portfolio',
+    type: 'website',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ankit Bhujeja',
+  jobTitle: 'Senior Frontend Engineer',
+  url: 'https://ankitbhujeja.com',
+  sameAs: [
+    'https://linkedin.com/in/ankitbhujeja',
+    'https://github.com/AnkitBhujeja'
+  ]
 };
 
 export default function HomePage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Home />
       <About />
       <Skills />

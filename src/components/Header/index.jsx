@@ -41,8 +41,50 @@ export const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
+
+    // Visibility change logic
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "Come back 👀 | Ankit Portfolio";
+      } else {
+        const titleMap = {
+          home: 'Home',
+          about: 'About',
+          skills: 'Skills',
+          education: 'Education',
+          work: 'Projects',
+          experience: 'Experience',
+          contact: 'Contact'
+        };
+        const sectionName = titleMap[activeSection] || 'Home';
+        document.title = `${sectionName} | Ankit Portfolio`;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [pathname, activeSection]);
+
+  // Sync title on section change when visible
+  useEffect(() => {
+    if (!document.hidden) {
+      const titleMap = {
+        home: 'Home',
+        about: 'About',
+        skills: 'Skills',
+        education: 'Education',
+        work: 'Projects',
+        experience: 'Experience',
+        contact: 'Contact'
+      };
+      const sectionName = titleMap[activeSection] || 'Home';
+      document.title = `${sectionName} | Ankit Portfolio`;
+    }
+  }, [activeSection]);
 
   const handleNavClick = (e, id, href) => {
     // If on homepage, let default navigation route back to /#id but perfectly offset it
@@ -86,6 +128,20 @@ export const Header = () => {
         </nav>
 
         <div className={styles.actions}>
+          <div 
+            className={styles.commandHint} 
+            title="Open Command Palette (Ctrl+K)"
+            onClick={() => {
+              window.dispatchEvent(new KeyboardEvent('keydown', {
+                key: 'k',
+                ctrlKey: true,
+                metaKey: true,
+                bubbles: true
+              }));
+            }}
+          >
+            Press <span>Ctrl + K</span>
+          </div>
           <ThemeToggle />
           <div 
             className={`${styles.menuBtn} ${menuOpen ? styles.open : ""}`} 
