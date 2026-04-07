@@ -207,6 +207,13 @@
        color: #0088cc;
        box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
     }
+
+    &.instagram:hover {
+       background: rgba(234, 67, 53, 0.2);
+       border-color: #ea4335;
+       color: #ea4335;
+       box-shadow: 0 5px 15px rgba(234, 67, 53, 0.4);
+    }
   }
 }
 
