@@ -8,34 +8,45 @@
 .content h3 {
   font-size: 5rem;
   font-weight: 800;
-  color: #e5e5e5;
+  color: var(--text-primary);
   line-height: 1.2;
+
+  :global(.light-theme) & {
+    color: #111827; /* Near black */
+  }
 }
 
 .content h3 span {
   font-size: 5rem;
   font-weight: 800;
   color: transparent;
-  text-shadow: 0 0 30px rgba(132, 43, 226, 0.3);
-  background: linear-gradient(90deg, #a78bfa, #c084fc, #e879f9);
+  text-shadow: 0 0 30px rgba(var(--accent-glow-rgb), 0.3);
+  background: linear-gradient(90deg, #a78bfa, #c084fc, var(--accent-pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   text-shadow: 0 0 20px rgba(26, 5, 46, 0.6);
+
+  :global(.light-theme) & {
+    background: linear-gradient(90deg, #6d28d9, #4c1d95); /* Dark purple */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
 }
 
 .content p {
   font-size: 2rem;
-  color: #a3a3a3;
+  color: var(--text-secondary);
   font-weight: 400;
   padding: 1.5rem 0;
   line-height: 1.6;
 }
 
 .content p span.typingText {
-  color: #b46eff;
+  color: var(--accent-secondary);
   font-weight: 600;
-  text-shadow: 0 0 10px rgba(180, 110, 255, 0.2);
+  text-shadow: 0 0 10px rgba(var(--border-bright-rgb), 0.2);
   white-space: nowrap;
 }
 
@@ -43,7 +54,7 @@
   display: inline-block;
   margin-left: 2px;
   animation: blink 1s step-end infinite;
-  color: #b46eff;
+  color: var(--accent-secondary);
 }
 
 .heroBtnSpacing {
@@ -69,8 +80,8 @@
 .socialIcon {
   display: flex;
   align-items: center;
-  color: #d1d5db;
-  background: rgba(45, 15, 80, 0.4);
+  color: var(--icon-color);
+  background: rgba(var(--bg-hover-rgb), 0.4);
   /* Richer resting purple background */
   height: 50px;
   max-width: 50px;
@@ -79,30 +90,40 @@
   padding: 0 5px;
   /* Symmetrical internal tight pad */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(180, 110, 255, 0.3);
+  border: 1px solid rgba(var(--border-bright-rgb), 0.3);
   /* Stronger visible border natively */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   text-decoration: none;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(132, 43, 226, 0.1);
+  box-shadow: 0 4px 12px rgba(var(--accent-glow-rgb), 0.1);
   /* Lighter resting shadow */
+
+  :global(.light-theme) & {
+    background: #ffffff; /* Button background white */
+    border-color: #8b5cf6; /* Purple Circle border */
+  }
 }
 
 .iconWrapper {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(132, 43, 226, 0.15);
+  background: rgba(var(--accent-glow-rgb), 0.15);
   /* Sleek purple inner base */
-  color: #d8b4fe;
-  /* Glowing purple icon inherently instead of dull gray */
+  color: var(--accent-primary);
+  /* Constant highly visible accent color adapting to both themes */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.8rem;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   flex-shrink: 0;
+
+  :global(.light-theme) & {
+    background: rgba(139, 92, 246, 0.1); /* Inside circle soft purple */
+    color: #6d28d9; /* Icon purple */
+  }
 }
 
 .socialName {
@@ -115,30 +136,39 @@
   transition: all 0.3s ease;
   margin-left: 10px;
   margin-right: 18px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .socialIcon:hover {
   max-width: 180px;
-  background: rgba(20, 5, 40, 0.8);
-  border-color: rgba(180, 110, 255, 0.5);
-  box-shadow: 0 8px 20px rgba(132, 43, 226, 0.2);
+  background: rgba(var(--bg-card-rgb), 0.8);
+  border-color: rgba(var(--border-bright-rgb), 0.5);
+  box-shadow: 0 8px 20px rgba(var(--accent-glow-rgb), 0.2);
   /* Lighter hover shadow */
   transform: translateY(-1px);
 }
 
 .socialIcon:hover .iconWrapper {
-  background: linear-gradient(135deg, #b46eff, #842be2);
-  color: #fff;
-  box-shadow: 0 0 12px rgba(180, 110, 255, 0.4);
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  color: var(--text-primary);
+  box-shadow: 0 0 12px rgba(var(--border-bright-rgb), 0.4);
   /* Lighter icon box shadow */
   transform: rotate(360deg);
+
+  :global(.light-theme) & {
+    color: #ffffff; /* Icon white */
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  }
 }
 
 .socialIcon:hover .socialName {
   opacity: 1;
   transform: translateX(0);
   transition-delay: 0.1s;
+
+  :global(.light-theme) & {
+    color: #6d28d9; /* Text around button purple */
+  }
 }
 
 @keyframes fadeIn {

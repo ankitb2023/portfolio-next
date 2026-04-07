@@ -2,47 +2,61 @@
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(var(--white-rgb), 0.03);
   padding: 1rem 0.8rem 1rem 1rem;
   border-radius: 1.3rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(var(--white-rgb), 0.05);
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
 
+  :global(.light-theme) & {
+    border: 1px solid rgba(0,0,0,0.2); /* Dark border */
+    background: #ebd7ff; /* Purple blended background */
+  }
+
   &:hover {
-    background: rgba(45, 15, 80, 0.4);
-    border-color: rgba(180, 110, 255, 0.5);
-    box-shadow: 0 8px 20px rgba(132, 43, 226, 0.2);
+    background: rgba(var(--bg-hover-rgb), 0.4);
+    border-color: rgba(var(--border-bright-rgb), 0.5);
+    box-shadow: 0 8px 20px rgba(var(--accent-glow-rgb), 0.2);
     transform: translateY(-2px);
   }
 }
 
 .textContainer {
   font-size: 1.3rem;
-  color: #e5e5e5;
+  color: var(--text-primary);
   transition: all 0.3s ease;
   /* Always keep content on ONE line */
   white-space: nowrap;
   flex: 1; /* Take remaining space */
 
+  :global(.light-theme) & {
+    color: #1f2937; /* Darker shade */
+    font-weight: 500;
+  }
+
   span {
-    color: #b46eff;
+    color: var(--accent-secondary);
     font-weight: 600;
     margin-right: 0.4rem;
+
+    :global(.light-theme) & {
+      color: #6d28d9;
+    }
   }
 }
 
 .infoCard:hover .textContainer {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .iconWrapper {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: rgba(132, 43, 226, 0.15);
-  color: #d8b4fe;
+  background: rgba(var(--accent-glow-rgb), 0.15);
+  color: var(--info-icon-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,13 +68,21 @@
   margin-left: auto;
   align-self: flex-start; /* Align top when text wraps to 2 lines */
   margin-top: 0.15rem;
+
+  :global(.light-theme) & {
+    color: #111827; /* default dark icon */
+  }
 }
 
 .infoCard:hover .iconWrapper {
-  background: linear-gradient(135deg, #b46eff, #842be2);
-  color: #fff;
-  box-shadow: 0 0 8px rgba(180, 110, 255, 0.5);
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  color: var(--text-primary);
+  box-shadow: 0 0 8px rgba(var(--border-bright-rgb), 0.5);
   transform: rotate(360deg);
+
+  :global(.light-theme) & {
+    color: #ffffff; /* light on hover */
+  }
 }
 
 /* ── Tablet ── */

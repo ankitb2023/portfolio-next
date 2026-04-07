@@ -16,146 +16,119 @@ html{
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-:root{
-  --zero-color:#000;
-  --btn-color:#fff;
-  --primary-color:#f7f7f7;
-  --secondary-color:rgba(255, 255, 255, 0.918);
-  --third-color:rgb(14, 36, 49);
-  --fourth-color:#7303a7;
-  --fifth-color:#ff7b00;
-  --sixth-color:#011aff;
-  --seven-color:rgb(24, 2, 63);
-  --eight-color:rgb(14, 15, 49);
-  --nine-color:#ffd000ea;
-  --ten-color:#940808;
-  /* for buttons */
-  --eleven-color:#2506ad;
-  --twelve-color:#3044f799;
-  --thirteen-color:#1a047e;
- 
-  /* social button */
-  --fourteen-color:#00d9ff;
+:root, .dark-theme {
+  /* RGB Base Arrays used for rgba() manipulations */
+  --bg-card-rgb: 20, 5, 40;
+  --bg-dark-rgb: 10, 0, 20;
+  --bg-hover-rgb: 45, 15, 80;
+  --border-rgb: 139, 92, 246;
+  --border-bright-rgb: 180, 110, 255;
+  --text-muted-rgb: 229, 229, 229;
+  --accent-glow-rgb: 132, 43, 226;
+  --white-rgb: 255, 255, 255;
+  --shadow-rgb: 0, 0, 0;
 
-  /* Skills */
-  --fifteen-color:linear-gradient(to bottom, #57059e, #00d1e0);
-  --sixteen-color:rgba( 0, 0, 22, 0.4);
-  --seventeen-color:rgba( 0, 0, 22, 0.9);
-  --eighteen-color:#fff;
-  --nineteen-color:rgba(4, 118, 122, 0.4);
-
-  /* Education */
-  --twenty-color:#e5ecfb;
-  --tweone:rgb(252, 252, 252);
-  --twetwo:rgb(34, 109, 0);
-
-  /* Work */
-  --twethree:linear-gradient(to bottom, #000031, #00002c);
-  --twefour-color:#fff;
-  --twefive-color:rgb(255, 230, 0);
-  --twesix-color:#310ae0f5;
-  --tweseven-color:rgba(65, 84, 241, 0.4);
-  --exe1-color:#fff;
+  /* Solid Hex Variables used globally */
+  --bg-body-main: #05020a;
+  --bg-body-gradient: radial-gradient(circle at 50% 0%, #3e1273 0%, #180536 30%, #05010a 100%) fixed;
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --accent-primary: #842be2;
+  --accent-secondary: #b46eff;
+  --accent-light: #dfb4ff;
+  --accent-pink: #e879f9;
+  --accent-dark: #5c13aa;
   
-  /* Experience */
-  --tweeight-color:#020133;
-  --twenine-color:#FF9F55;
-  --thirty-color:#f68c09;
-  --thirtyone-color:#f6ab09;
-  --thirtytwo-color:rgb(51, 51, 51); 
-   --exe2-color:#fff;
- 
+  /* Abstracted variables for components to keep dark mode isolated */
+  --btn-bg: rgba(49, 27, 94, 0.95);
+  --btn-hover-bg: rgba(94, 28, 185, 0.95);
+  --editor-bg: rgba(var(--bg-card-rgb), 0.9);
+  --editor-hover-bg: rgba(25, 10, 50, 0.95);
+  --icon-color: var(--text-secondary);
+  --info-icon-color: #d8b4fe;
 
-  /* Shadow */
-   --shadow-color:rgba(0,0,0,0.3);
-   --shadow2-color:rgba(0,0,0,0.1);
+  /* Terminal Syntax */
+  --syntax-keyword: #ff7b72;
+  --syntax-variable: #79c0ff;
+  --syntax-string: #a5d6ff;
+  --syntax-check: #27c93f;
+  
+  --scrollbar-track: rgb(235, 202, 245);
+  --scrollbar-thumb: #420177;
 
-
-   /* Footer */
-   --foot1-color:#ccc;
-   --foot2-color:#E90606; 
-    --foot3-color:#020133;
- 
+  /* Tech Node mapping */
+  --color-js: #f7df1e; --border-js: rgba(247, 223, 30, 0.4);
+  --color-react: #61dafb; --border-react: rgba(97, 218, 251, 0.4);
+  --color-ts: #3178c6; --border-ts: rgba(49, 120, 198, 0.4);
+  --color-next: #ffffff; --border-next: rgba(255, 255, 255, 0.3);
+  --color-java: #f89820; --border-java: rgba(248, 152, 32, 0.4);
+  --color-spring: #6db33f; --border-spring: rgba(109, 179, 63, 0.4);
+  --color-docker: #2496ed; --border-docker: rgba(36, 150, 237, 0.4);
+  --color-git: #f05032; --border-git: rgba(240, 80, 50, 0.4);
 }
 
-.dark-theme{
-  --btn-color:#fff;
-   --zero-color:#fffdfd;
-   --primary-color:#5e5858;
-   --secondary-color:rgba(14, 9, 9, 0.918);
-   /* heading */
-   --third-color:rgb(230, 243, 255);
-   /* Heading */
-   --fourth-color:#f70303;
-    /*Span  */
-   --fifth-color:#fc0d2c;
-   /* Themeor navbar */
-   --sixth-color:#01ff80;
-   --seven-color:rgb(161, 160, 163);
-   /* Hi there */
-   --eight-color:rgb(246, 247, 250);
-   /* Photo */
-   --nine-color:#fca30d;
-   /* typing */
-   --ten-color:#4dd1ac;
-   /* for buttons */
-   --eleven-color:#06ad49;
-   --twelve-color:#759176;
-   --thirteen-color:#17b38c;
-  
-   /* social button */
-   --fourteen-color:#e44934e7;
- 
-   /* Skills */
-   --fifteen-color:linear-gradient(to bottom, #aa192c, #00e083);
-   --sixteen-color:rgba(145, 33, 18, 0.4);
-   --seventeen-color:rgba(6, 18, 73, 0.9);
-   --eighteen-color:#fff;
-   --nineteen-color:rgba(4, 118, 122, 0.4);
- 
-   /* Education */
-   --twenty-color:linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
-   ;
-   --tweone:rgb(51, 29, 29);
-   --twetwo:rgb(184, 224, 160);
- 
-   /* Work */
-   --twethree:linear-gradient(to bottom, #5c0250, #70220a);
-   --twefour-color:#fff;
-   --twefive-color:rgb(255, 0, 0);
-   --twesix-color:#06ad49;
-   --tweseven-color:rgba(65, 84, 241, 0.4);
-    --exe1-color:#17b38c;
+.light-theme {
+  /* Modern clean Light mode mapped RGB values */
+  --bg-card-rgb: 248, 245, 255;
+  --bg-dark-rgb: 250, 248, 255;
+  --bg-hover-rgb: 235, 230, 255;
+  --border-rgb: 216, 180, 254;
+  --border-bright-rgb: 192, 132, 252;
+  --text-muted-rgb: 107, 114, 128;
+  --accent-glow-rgb: 167, 139, 250;
+  --white-rgb: 15, 23, 42; 
+  --shadow-rgb: 109, 40, 217; 
 
-   /* Experience */
-   --tweeight-color:#e2e2f0d8;
-   --twenine-color:#dd4710;
-   --thirty-color:#ac3c14;
-   --thirtyone-color:#e74f1a;
-   --thirtytwo-color:rgb(51, 51, 51);
-   --exe2-color:linear-gradient(to bottom,#000 ,#792a13 );
- 
-   /* Shadow */
-    --shadow-color:rgba(0,0,0,0.3);
-    --shadow2-color:rgba(0,0,0,0.1);
- 
- 
-    /* Footer */
-    --foot1-color:#ccc;
-    --foot2-color:#E90606;
-    --foot3-color:#000;
+  /* Crisp solid modern light theme hexes */
+  --bg-body-main: #ffffff;
+  --bg-body-gradient: radial-gradient(circle at 25% 30%, #ebd7ff 0%, #f3ebff 25%, #ffffff 50%, #f6efff 75%, #ebd7ff 100%) fixed;
+  --text-primary: #1a1a1a; /* near black */
+  --text-secondary: #334155; /* deep dark gray */
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #6d28d9;
+  --accent-light: #c4b5fd;
+  --accent-pink: #d946ef;
+  --accent-dark: #4c1d95;
+  
+  /* Abstracted variables for components */
+  --btn-bg: var(--accent-primary); 
+  --btn-hover-bg: var(--accent-secondary); 
+  --editor-bg: #f3f0ff;
+  --editor-hover-bg: #eae5ff;
+  --icon-color: #8b5cf6; /* Soft colored icons */
+  --info-icon-color: #6d28d9;
+
+  /* Terminal Syntax (Light Mode adjusted for high visibility) */
+  --syntax-keyword: #d73a49;
+  --syntax-variable: #005cc5;
+  --syntax-string: #032f62;
+  --syntax-check: #22863a;
+  
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #a78bfa;
+
+  /* Darker Tech Node mapping for Light Mode legibility */
+  --color-js: #998a0c; --border-js: rgba(153, 138, 12, 0.8);
+  --color-react: #1d7b96; --border-react: rgba(29, 123, 150, 0.8);
+  --color-ts: #1b4970; --border-ts: rgba(27, 73, 112, 0.8);
+  --color-next: #0f172a; --border-next: rgba(15, 23, 42, 0.8);
+  --color-java: #a3610c; --border-java: rgba(163, 97, 12, 0.8);
+  --color-spring: #40751f; --border-spring: rgba(64, 117, 31, 0.8);
+  --color-docker: #125785; --border-docker: rgba(18, 87, 133, 0.8);
+  --color-git: #a83822; --border-git: rgba(168, 56, 34, 0.8);
 }
+
 body {
-  background: #05020a;
-  background: radial-gradient(circle at 50% 0%, #3e1273 0%, #180536 30%, #05010a 100%) fixed;
+  background: var(--bg-body-main);
+  background: var(--bg-body-gradient);
   background-size: cover;
   font-family: 'Poppins', sans-serif;
-  color: #fff;
+  color: var(--text-primary);
 }
 
-*::selection{
-  background: #2b3dda;
-  color: #fff;
+*::selection {
+  background: var(--accent-primary);
+  color: #fff; /* Static white for crisp selection reading */
 }
 
 html{
@@ -166,10 +139,10 @@ html::-webkit-scrollbar{
   width: .8rem;
 }
 html::-webkit-scrollbar-track{
-  background: rgb(235, 202, 245);
+  background: var(--scrollbar-track);
 }
 html::-webkit-scrollbar-thumb{
-  background: #420177;
+  background: var(--scrollbar-thumb);
 }
 
 /* common media queries starts*/

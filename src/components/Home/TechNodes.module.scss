@@ -11,8 +11,8 @@
 
 .techNode {
   position: absolute;
-  background: rgba(10, 2, 20, 0.85);
-  border: 1px solid;
+  background: rgba(var(--bg-dark-rgb), 0.85);
+  border: 1px solid rgba(var(--border-bright-rgb), 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 40px; /* Pill shape */
@@ -23,20 +23,32 @@
   padding: 10px 22px;
   font-size: 1.5rem;
   font-weight: 600;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 10px 25px rgba(var(--shadow-rgb), 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
   pointer-events: auto; /* Re-enable for the icons themselves */
   animation: floatRandomly 6s ease-in-out infinite alternate;
   
   i {
     font-size: 2.2rem;
   }
+
+  :global(.light-theme) & {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a; /* Darker text */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #475569; /* Consistent dark border */
+  }
 }
 
 .techNode:hover {
   transform: scale(1.1) !important;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(var(--white-rgb), 0.05);
   filter: brightness(1.2);
+
+  :global(.light-theme) & {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    filter: brightness(1);
+  }
 }
 
 .posJs {
@@ -61,6 +73,7 @@
   bottom: -150px;
   left: 150px;
   animation-delay: -2s;
+  :global(.light-theme) & { border: 2px solid #0f172a; } /* Near black for Next.js */
 }
 
 .posJava {

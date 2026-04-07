@@ -16,12 +16,12 @@ export const ROTATING_SECTIONS = [
 ];
 
 export const techNodesData = [
-  { id: 'js', name: 'JavaScript', icon: 'fab fa-js', color: '#f7df1e', borderColor: 'rgba(247, 223, 30, 0.4)' },
-  { id: 'react', name: 'React', icon: 'fab fa-react', color: '#61dafb', borderColor: 'rgba(97, 218, 251, 0.4)' },
-  { id: 'ts', name: 'TypeScript', icon: 'fas fa-file-code', color: '#3178c6', borderColor: 'rgba(49, 120, 198, 0.4)' },
-  { id: 'next', name: 'Next.js', icon: 'fab fa-node-js', color: '#ffffff', borderColor: 'rgba(255, 255, 255, 0.3)' },
-  { id: 'java', name: 'Java', icon: 'fab fa-java', color: '#f89820', borderColor: 'rgba(248, 152, 32, 0.4)' },
-  { id: 'spring', name: 'Spring', icon: 'fas fa-leaf', color: '#6db33f', borderColor: 'rgba(109, 179, 63, 0.4)' },
-  { id: 'docker', name: 'Docker', icon: 'fab fa-docker', color: '#2496ed', borderColor: 'rgba(36, 150, 237, 0.4)' },
-  { id: 'git', name: 'Git', icon: 'fab fa-git-alt', color: '#f05032', borderColor: 'rgba(240, 80, 50, 0.4)' },
+  { id: 'js', name: 'JavaScript', icon: 'fab fa-js', color: 'var(--color-js)', borderColor: 'var(--border-js)' },
+  { id: 'react', name: 'React', icon: 'fab fa-react', color: 'var(--color-react)', borderColor: 'var(--border-react)' },
+  { id: 'ts', name: 'TypeScript', icon: 'fas fa-file-code', color: 'var(--color-ts)', borderColor: 'var(--border-ts)' },
+  { id: 'next', name: 'Next.js', icon: 'fab fa-node-js', color: 'var(--color-next)', borderColor: 'var(--border-next)' },
+  { id: 'java', name: 'Java', icon: 'fab fa-java', color: 'var(--color-java)', borderColor: 'var(--border-java)' },
+  { id: 'spring', name: 'Spring', icon: 'fas fa-leaf', color: 'var(--color-spring)', borderColor: 'var(--border-spring)' },
+  { id: 'docker', name: 'Docker', icon: 'fab fa-docker', color: 'var(--color-docker)', borderColor: 'var(--border-docker)' },
+  { id: 'git', name: 'Git', icon: 'fab fa-git-alt', color: 'var(--color-git)', borderColor: 'var(--border-git)' },
 ];

@@ -21,15 +21,15 @@
     0deg,
     transparent,
     transparent 4px,
-    rgba(132, 43, 226, 0.03) 4px,
-    rgba(132, 43, 226, 0.05) 8px
+    rgba(var(--accent-glow-rgb), 0.03) 4px,
+    rgba(var(--accent-glow-rgb), 0.05) 8px
   ),
   repeating-linear-gradient(
     90deg,
     transparent,
     transparent 40px,
-    rgba(255, 255, 255, 0.02) 40px,
-    rgba(255, 255, 255, 0.02) 41px
+    rgba(var(--white-rgb), 0.02) 40px,
+    rgba(var(--white-rgb), 0.02) 41px
   );
   z-index: 0;
   pointer-events: none;
@@ -43,7 +43,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at center top, rgba(132, 43, 226, 0.15) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center top, rgba(var(--accent-glow-rgb), 0.15) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -74,7 +74,7 @@
   left: 10%;
   right: 10%;
   bottom: 10%;
-  background: radial-gradient(circle, rgba(132, 43, 226, 0.4) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(var(--accent-glow-rgb), 0.4) 0%, transparent 65%);
   border-radius: 50%;
   z-index: 0;
   animation: pulseGlow 4s infinite alternate ease-in-out;

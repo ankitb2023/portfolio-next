@@ -5,7 +5,7 @@
   padding: 1px;
   z-index: 10;
   transition: all 0.4s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(var(--shadow-rgb), 0.3);
 }
 
 .btnAnimatedBorder {
@@ -13,7 +13,7 @@
   inset: 0;
   border-radius: 50px;
   padding: 1.5px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(var(--text-primary) 0 0) content-box, linear-gradient(var(--text-primary) 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -36,6 +36,16 @@
   );
   transform: translate(-50%, -50%) rotate(0deg);
   animation: borderSpin 4s linear infinite;
+
+  :global(.light-theme) & {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      transparent 60%,
+      #00e5ff 85%, 
+      rgba(132, 90, 217, 0.4) 100% 
+    );
+  }
 }
 
 @keyframes borderSpin {
@@ -46,29 +56,31 @@
 
 .btnContainer:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 25px rgba(var(--shadow-rgb), 0.4);
+  color: var(--text-primary);
 }
 
-/* Conic gradient changes to white/cream on hover */
 .btnContainer:hover .btnAnimatedBorder::before {
   background: conic-gradient(
     from 0deg,
     transparent 0%,
     transparent 60%,
     rgba(250, 248, 245, 0.8) 85%, /* Cream */
-    rgba(255, 255, 255, 1) 100%   /* White */
+    rgba(var(--white-rgb), 1) 100%   /* White */
   );
 }
 
 .btnContainer:hover .btn {
-  background: rgba(94, 28, 185, 0.95); /* Lighter vibrant purple */
-  color: #fff;
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  background: var(--btn-hover-bg);
+  :global(.light-theme) & {
+    color: #ffffff; /* Force light text on dark button */
+  }
+  box-shadow: inset 0 2px 5px rgba(var(--white-rgb), 0.3);
 }
 
 .btnContainer:hover i {
   transform: translateY(3px);
-  color: #ffffff; /* White icon to match text */
+  color: var(--text-primary); /* White icon to match text */
 }
 
 .btn {
@@ -77,9 +89,9 @@
   padding: 1rem 2.8rem;
   border-radius: 48px; /* Inner bounding snap */
   transition: all 0.4s ease;
-  color: #fff;
-  background: rgba(49, 27, 94, 0.95); /* Deep dark indigo/purple blend */
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.15); /* Top inner 3D glow */
+  color: var(--text-primary);
+  background: var(--btn-bg);
+  box-shadow: inset 0 2px 5px rgba(var(--white-rgb), 0.15); /* Top inner 3D glow */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-family: inherit;
@@ -89,6 +101,10 @@
   border: none;
   width: 100%;
   height: 100%;
+
+  :global(.light-theme) & {
+    color: #ffffff; /* Force light text on dark button */
+  }
 }
 
 .btn span {
@@ -102,4 +118,8 @@
   margin-left: 1rem;
   font-size: 1.25rem;
   transition: all 0.4s ease;
+
+  :global(.light-theme) & {
+    color: #ffffff;
+  }
 }
