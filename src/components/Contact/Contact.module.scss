@@ -254,6 +254,15 @@
         box-shadow: 0 0 15px rgba(109, 40, 217, 0.2);
       }
     }
+
+    &.invalid {
+      border-color: #ff4757 !important;
+      box-shadow: 0 0 10px rgba(255, 71, 87, 0.2);
+
+      & ~ i {
+        color: #ff4757 !important;
+      }
+    }
   }
 
   textarea {
@@ -282,6 +291,26 @@
     :global(.light-theme) & {
       color: #6d28d9;
     }
+  }
+}
+
+.errorMsg {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 0.8rem;
+  color: #ff4757;
+  margin-top: 4px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: fadeIn 0.3s ease;
+
+  i {
+    position: static !important;
+    font-size: 0.8rem !important;
+    color: inherit !important;
   }
 }
 
