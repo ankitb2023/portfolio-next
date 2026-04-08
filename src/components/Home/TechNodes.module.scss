@@ -19,9 +19,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 10px 22px;
-  font-size: 1.5rem;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 1.2rem;
   font-weight: 600;
   box-shadow: 0 10px 25px rgba(var(--shadow-rgb), 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
@@ -29,7 +29,7 @@
   animation: floatRandomly 6s ease-in-out infinite alternate;
   
   i {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
 
   :global(.light-theme) & {
@@ -52,50 +52,49 @@
 }
 
 .posJs {
-  bottom: -80px;
-  left: -60px;
+  bottom: -70px;
   animation-delay: -4s;
 }
 
 .posReact {
-  bottom: -155px;
-  left: -40px;
+  bottom: -135px;
+  left: 10px;
   animation-delay: 0s;
 }
 
 .posTs {
-  bottom: -80px;
-  left: 100px;
+  bottom: -70px;
+  left: 130px;
   animation-delay: -1s;
 }
 
 .posNext {
-  bottom: -150px;
-  left: 150px;
+  bottom: -130px;
+  left: 130px;
   animation-delay: -2s;
   :global(.light-theme) & { border: 2px solid #0f172a; } /* Near black for Next.js */
 }
 
 .posJava {
-  bottom: -220px;
-  left: 50px;
+  bottom: -190px;
+  left: 70px;
   animation-delay: -3s;
 }
 
 .posSpring {
   bottom: -100px;
-  left: 310px;
+  left: 270px;
   animation-delay: -1s;
 }
 
 .posDocker {
-  bottom: -180px;
-  left: 290px;
+  bottom: -150px;
+  left: 250px;
   animation-delay: -5s;
 }
 
 .posGit {
-  bottom: -250px;
+  bottom: -190px;
   left: 170px;
   animation-delay: -2.5s;
 }

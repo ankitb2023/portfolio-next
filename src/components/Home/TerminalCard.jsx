@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './TerminalCard.module.scss';
+import { useTerminal } from '../../customhook/useTerminal';
 
 const terminalLines = [
   {
@@ -74,7 +75,20 @@ TypewriterContent.displayName = 'TypewriterContent';
 export const TerminalCard = () => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+  
   const containerRef = useRef(null);
+  const bodyRef = useRef(null);
+  
+  const { 
+    history, 
+    input, 
+    setInput, 
+    handleKeyDown, 
+    context, 
+    suggestions, 
+    executeCommand 
+  } = useTerminal(styles);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -92,10 +106,26 @@ export const TerminalCard = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
+  }, [history, input, currentLineIndex, suggestions]);
+
+  useEffect(() => {
+    if (isAnimationComplete && history.length === 0) {
+      // Automatically show help command once and clear wait time
+      setTimeout(() => executeCommand('help'), 400);
+    }
+  }, [isAnimationComplete, history.length, executeCommand]);
+
   const handleComplete = useCallback((idx) => {
     setCurrentLineIndex(prev => {
-      if (prev === idx) return prev + 1;
-      return prev;
+      const next = prev === idx ? prev + 1 : prev;
+      if (next >= terminalLines.length) {
+        setIsAnimationComplete(true);
+      }
+      return next;
     });
   }, []);
 
@@ -108,7 +138,7 @@ export const TerminalCard = () => {
           <span className={styles.dotYellow}></span>
           <span className={styles.dotGreen}></span>
         </div>
-        <div className={styles.editorBody}>
+        <div className={styles.editorBody} ref={bodyRef}>
           <code>
             {terminalLines.map((line, idx) => {
               let isFuture = idx > currentLineIndex;
@@ -125,7 +155,7 @@ export const TerminalCard = () => {
                   return (
                     <React.Fragment key={line.id}>
                       <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
-                      <span className={styles.cursorBlink}>_</span>
+                      {!isAnimationComplete && <span className={styles.cursorBlink}>_</span>}
                     </React.Fragment>
                   );
                 }
@@ -142,7 +172,7 @@ export const TerminalCard = () => {
                   ) : isCurrent ? (
                     <>
                       <TypewriterContent line={line} index={idx} onComplete={handleComplete} />
-                      <span className={styles.cursorBlink}>_</span>
+                      {!isAnimationComplete && <span className={styles.cursorBlink}>_</span>}
                     </>
                   ) : (
                     <>
@@ -151,14 +181,72 @@ export const TerminalCard = () => {
                     </>
                   )}
                   
-                  {/* Keep blinking cursor at the very end after completion */}
-                  {idx === terminalLines.length - 1 && isPast && (
+                  {/* Keep blinking cursor at the very end after completion if not interactive yet */}
+                  {idx === terminalLines.length - 1 && isPast && !isAnimationComplete && (
                     <span className={styles.cursorBlink}>_</span>
                   )}
                   <br />
                 </React.Fragment>
               );
             })}
+
+            {/* Interactive CLI Mode */}
+            {isAnimationComplete && (
+              <div style={{ marginTop: '1rem' }}>
+                {history.map((item, i) => (
+                  <div key={i}>
+                    {item.type === 'command' ? (
+                      <div style={{ marginTop: '0.2rem' }}>
+                        <span className={styles.prompt}>
+                           {/* Depending on if we tracked context on past command, but string is enough */}
+                           &gt;
+                        </span>
+                        <span className={styles.cmd}>{item.value}</span>
+                      </div>
+                    ) : (
+                      <div style={{ marginTop: '0.4rem', marginBottom: '0.8rem' }}>
+                        {item.content}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                
+                {/* Current Input Line */}
+                <div className={styles.terminalInputDiv}>
+                  <span className={styles.prompt}>
+                    {context?.type === 'project' ? `> project ${context.id + 1}` : '>'}
+                  </span>
+                  <input
+                    className={styles.terminalInput}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    autoFocus
+                    spellCheck={false}
+                    autoComplete="off"
+                  />
+                </div>
+
+                {/* Suggestions Dropdown */}
+                {input.length > 0 && suggestions.length > 0 && (
+                  <div className={styles.suggestionsDropdown}>
+                    {suggestions.map(s => (
+                      <span 
+                        key={s} 
+                        className={styles.suggestionItem} 
+                        onClick={() => {
+                          setInput(s);
+                          // We might optionally automatically execute here, but setting input is safer
+                        }}
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+            <br />
           </code>
         </div>
       </div>
