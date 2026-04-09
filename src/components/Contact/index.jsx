@@ -7,6 +7,7 @@ import { ContactInfoCard } from '@/components/common/ContactInfoCard';
 import styles from './Contact.module.scss';
 import { contactLinks } from '@/data/contact';
 import { useContactFormMemory } from '@/customhook/useContactFormMemory';
+import { useVisitorContext } from '@/context/VisitorContext';
 
 export const Contact = () => {
   const formRef = useRef(null);
@@ -15,6 +16,7 @@ export const Contact = () => {
   
   const { formData, updateFormData, hasDraft, isReady: contactReady, clearMemory, isValid, isEmailValid } = useContactFormMemory();
   const [emailTouched, setEmailTouched] = useState(false);
+  const { isReturningUser, isReady: visitorReady } = useVisitorContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +63,11 @@ export const Contact = () => {
         {/* ── Left Info Panel ── */}
         <div className={styles.infoPanel}>
           <div className={styles.infoTitle}>
+            {visitorReady && isReturningUser ? (
+              <h3>Welcome back! Ready to connect?</h3>
+            ) : (
               <h3>Turn ideas into reality</h3>
+            )}
             <p>
               Have a project in mind or want to collaborate? <br/>Let’s connect and bring your ideas to life.
             </p>
@@ -78,36 +84,22 @@ export const Contact = () => {
 
         {/* ── Right Form Panel ── */}
         <div className={styles.formPanel}>
-          {/* Smart Resume UI */}
-          {contactReady && hasDraft && (
-            <div style={{
-              background: 'var(--surface-light)',
-              border: '1px solid var(--border-color)',
-              padding: '8px 12px',
-              borderRadius: '6px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '1rem',
-              fontSize: '0.85rem'
-            }}>
-              <span style={{color: 'var(--text-secondary)'}}>
-                <i className="fas fa-edit"></i> Draft saved. Continue where you left off?
-              </span>
-              <button 
-                onClick={(e) => { e.preventDefault(); clearMemory(); setEmailTouched(false); }}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--accent-primary)',
-                  cursor: 'pointer',
-                  fontWeight: '500'
-                }}
-              >
-                Clear
-              </button>
-            </div>
-          )}
+          {/* Smart Resume UI - Wrapper prevents visual layout shift by reserving height */}
+          <div className={styles.draftWrapper}>
+            {contactReady && hasDraft && (
+              <div className={styles.draftBanner}>
+                <span>
+                  <i className="fas fa-edit"></i> Draft saved. Continue where you left off?
+                </span>
+                <button 
+                  onClick={(e) => { e.preventDefault(); clearMemory(); setEmailTouched(false); }}
+                  className={styles.draftClearBtn}
+                >
+                  Clear
+                </button>
+              </div>
+            )}
+          </div>
 
           <form ref={formRef} onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
@@ -167,10 +159,6 @@ export const Contact = () => {
                 type="submit"
                 className={styles.submitBtn}
                 disabled={isSubmitting || (contactReady && !isValid)}
-                style={{
-                  opacity: (contactReady && !isValid) ? 0.6 : 1,
-                  cursor: (contactReady && !isValid) ? 'not-allowed' : 'pointer'
-                }}
               >
                 {isSubmitting ? (
                   <>

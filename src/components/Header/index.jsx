@@ -1,43 +1,85 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { smoothScrollTo } from '@/utils/scroll';
 import { sectionQuickLinks } from '@/data/layout/common';
 import { ThemeToggle } from '../common/ThemeToggle';
+import { useVisitorContext } from '@/context/VisitorContext';
 
 export const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { updateMemory, isReturningUser, memory, isReady } = useVisitorContext();
+  const [showResumeBanner, setShowResumeBanner] = useState(false);
+  const trackedSectionRef = useRef(null);
+
+  useEffect(() => {
+    if (isReady && isReturningUser && memory.lastSessionSection && memory.lastSessionSection !== 'home') {
+      const shown = sessionStorage.getItem('portfolio_resume_banner_shown');
+      if (!shown && window.scrollY < 100) {
+        setShowResumeBanner(true);
+        sessionStorage.setItem('portfolio_resume_banner_shown', 'true');
+        const timer = setTimeout(() => setShowResumeBanner(false), 5000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [isReady, isReturningUser, memory.lastSessionSection]);
+
+  useEffect(() => {
+    const handleScrollHide = () => {
+      if (window.scrollY > 100 && showResumeBanner) {
+        setShowResumeBanner(false);
+      }
+    };
+    if (showResumeBanner) {
+      window.addEventListener("scroll", handleScrollHide);
+    }
+    return () => window.removeEventListener("scroll", handleScrollHide);
+  }, [showResumeBanner]);
+
+  useEffect(() => {
+    if (showResumeBanner && memory.currentSection && memory.currentSection !== 'home') {
+      setShowResumeBanner(false);
+    }
+  }, [memory.currentSection, showResumeBanner]);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sections = document.querySelectorAll("section[id]");
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      // Filter only intersecting entries and find the one with the highest intersection ratio
+      const mostVisible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (mostVisible) {
+        const newSection = mostVisible.target.id;
+        if (trackedSectionRef.current !== newSection) {
+          trackedSectionRef.current = newSection;
+          setActiveSection(newSection);
+          updateMemory({ currentSection: newSection });
+        }
+      }
+    }, {
+      threshold: [0.4],
+      rootMargin: '-5% 0px -5% 0px'
+    });
+
+    sections.forEach(s => observer.observe(s));
+    return () => observer.disconnect();
+  }, [pathname, updateMemory]);
 
   useEffect(() => {
     const handleScroll = () => {
       // Navbar shrink effect
       setIsScrolled(window.scrollY > 50);
-
-      // Scroll spy logic active only on homepage
-      if (pathname === "/") {
-        const sections = document.querySelectorAll("section[id]");
-        let current = "home";
-        let minDistance = Infinity;
-
-        // Determine which section center is closest to screen center
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          const elementCenter = rect.top + rect.height / 2;
-          const screenCenter = window.innerHeight / 2;
-          const distance = Math.abs(screenCenter - elementCenter);
-          if (distance < minDistance) {
-            minDistance = distance;
-            current = section.getAttribute("id");
-          }
-        });
-        setActiveSection(current);
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -92,9 +134,9 @@ export const Header = () => {
       e.preventDefault();
       setMenuOpen(false);
       if (id === 'home') {
-         window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-         smoothScrollTo(id);
+        smoothScrollTo(id);
       }
     } else {
       setMenuOpen(false);
@@ -107,17 +149,16 @@ export const Header = () => {
         <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
           <i className="fab fa-angular" aria-hidden="true"></i> Ankit
         </Link>
-        
-        
+
+
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
           <ul className={styles.navList}>
             {sectionQuickLinks.map((link) => (
               <li key={link.id}>
                 <Link
                   href={link.href}
-                  className={`${styles.navLink} ${
-                    activeSection === link.id && pathname === "/" ? styles.active : ""
-                  }`}
+                  className={`${styles.navLink} ${activeSection === link.id && pathname === "/" ? styles.active : ""
+                    }`}
                   onClick={(e) => handleNavClick(e, link.id, link.href)}
                 >
                   {link.label}
@@ -128,8 +169,8 @@ export const Header = () => {
         </nav>
 
         <div className={styles.actions}>
-          <div 
-            className={styles.commandHint} 
+          <div
+            className={styles.commandHint}
             title="Open Command Palette (Ctrl+K)"
             onClick={() => {
               window.dispatchEvent(new KeyboardEvent('keydown', {
@@ -143,14 +184,38 @@ export const Header = () => {
             Press <span>Ctrl + K</span>
           </div>
           <ThemeToggle />
-          <div 
-            className={`${styles.menuBtn} ${menuOpen ? styles.open : ""}`} 
+          <div
+            className={`${styles.menuBtn} ${menuOpen ? styles.open : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <div className={styles.burgerPanel}></div>
           </div>
         </div>
       </div>
+
+      {showResumeBanner && (
+        <div className={styles.resumeBanner}>
+          <span className={styles.resumeMessage}>Welcome back 👋 Continue where you left off?</span>
+          <div className={styles.resumeActions}>
+            <button
+              onClick={() => {
+                setShowResumeBanner(false);
+                smoothScrollTo(memory.lastSessionSection);
+                updateMemory({ currentSection: memory.lastSessionSection });
+              }}
+              className={styles.resumeBtn}
+            >
+              Continue
+            </button>
+            <button
+              onClick={() => setShowResumeBanner(false)}
+              className={styles.closeBtn}
+            >
+              <i className="fas fa-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

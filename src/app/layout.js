@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/context/ToastContext";
+import { VisitorProvider } from "@/context/VisitorContext";
 import { Header } from "@/components/Header";
 import { BackToTop } from "@/components/common/BackToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -29,13 +30,15 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <ThemeProvider>
-          <ToastProvider>
-            <PWA />
-            <Header />
-            <CommandPalette />
-            {children}
-            <BackToTop />
-          </ToastProvider>
+          <VisitorProvider>
+            <ToastProvider>
+              <PWA />
+              <Header />
+              <CommandPalette />
+              {children}
+              <BackToTop />
+            </ToastProvider>
+          </VisitorProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -9,3 +9,6 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/ankit-bhujeja/";
 export const GITHUB_URL = "https://github.com/AnkitBhujeja";
 export const TELEGRAM_URL = "https://t.me/abhujeja";
 export const INSTAGRAM_URL = "https://www.instagram.com/ankit_bhujeja";
+
+export const MEMORY_KEY = 'portfolio_visitor_memory';;
+export const CONTACT_MEMORY_KEY = 'portfolio_contact_draft';

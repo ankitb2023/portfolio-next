@@ -229,6 +229,21 @@ export const useTerminal = (styles) => {
           <div style={{ marginTop: '8px', fontSize: '0.9em', opacity: 0.8 }}>Type <span className={styles.clickableCommand} onClick={() => executeAndSetInput('back')}>back</span> to cancel.</div>
         </div>
       );
+    } else if (cmd === 'welcome back') {
+      let section = null;
+      try {
+        const memObj = JSON.parse(localStorage.getItem('portfolio_visitor_memory') || '{}');
+        section = memObj.lastSessionSection || memObj.lastSection; // Fallback for old cache
+      } catch (e) { }
+
+      if (section && section !== 'home') {
+        pushOutput(<div className={styles.terminalText}>Resuming session... navigating to {section}</div>);
+        setTimeout(() => {
+          smoothScrollTo(section);
+        }, 300);
+      } else {
+        pushOutput(<div className={styles.errorText}>No previous session found to resume.</div>);
+      }
     } else if (cmd === 'education') {
       pushOutput(
         <div>

@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-const CONTACT_MEMORY_KEY = 'portfolio_contact_draft';
+import { CONTACT_MEMORY_KEY } from '@/constants/constants';
 
 export const useContactFormMemory = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
