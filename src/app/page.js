@@ -6,6 +6,7 @@ import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { ScrollReveal } from "@/components/common/ScrollReveal";
 
 export const metadata = {
   title: 'Portfolio | Home',
@@ -39,12 +40,12 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Home />
-      <About />
-      <Skills />
-      <Education />
-      <Projects />
-      <Experience />
-      <Contact />
+      <ScrollReveal><About /></ScrollReveal>
+      <ScrollReveal><Skills /></ScrollReveal>
+      <ScrollReveal><Education /></ScrollReveal>
+      <ScrollReveal><Projects /></ScrollReveal>
+      <ScrollReveal><Experience /></ScrollReveal>
+      <ScrollReveal><Contact /></ScrollReveal>
       <Footer />
     </main>
   );

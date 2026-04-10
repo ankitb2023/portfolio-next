@@ -11,9 +11,6 @@
   outline: none; border: none;
 }
 
-body.transitions-ready * {
-  transition: all .2s linear;
-}
 
 *:focus-visible {
   outline: 2px solid var(--accent-primary);
@@ -23,8 +20,17 @@ html{
   font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
 }
 :root, .dark-theme {
+  /* Interaction Design Tokens */
+  --interaction-duration: 0.2s;
+  --interaction-easing: ease-out;
+  --interaction-easing-in-out: ease-in-out;
+  --hover-lift-sm: -2px;
+  --hover-lift-md: -4px;
+  --focus-ring-color: rgba(132, 90, 217, 0.2);
+
   /* RGB Base Arrays used for rgba() manipulations */
   --bg-card-rgb: 20, 5, 40;
   --bg-dark-rgb: 10, 0, 20;
@@ -139,10 +145,7 @@ body {
   color: #fff; /* Static white for crisp selection reading */
 }
 
-html{
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
+
 html::-webkit-scrollbar{
   width: .8rem;
 }

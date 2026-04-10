@@ -29,7 +29,7 @@
 
   &:hover {
     background: linear-gradient(135deg, rgba(var(--border-bright-rgb), 0.8), rgba(var(--accent-glow-rgb), 0.9));
-    transform: translateY(-5px);
+    transform: translateY(var(--hover-lift-md));
     box-shadow: 0 10px 25px rgba(var(--accent-glow-rgb), 0.5);
 
     :global(.light-theme) & {
@@ -44,6 +44,11 @@
 
   &:hover i {
     transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.95);
+    transition-duration: 0.1s;
   }
 }
 

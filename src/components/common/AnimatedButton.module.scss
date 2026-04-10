@@ -4,7 +4,8 @@
   border-radius: 50px;
   padding: 1px;
   z-index: 10;
-  transition: all 0.4s ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing);
   box-shadow: 0 4px 15px rgba(var(--shadow-rgb), 0.3);
 }
 
@@ -55,9 +56,15 @@
 }
 
 .btnContainer:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(var(--shadow-rgb), 0.4);
+  transform: translateY(var(--hover-lift-sm));
+  box-shadow: 0 10px 25px rgba(var(--shadow-rgb), 0.35);
   color: var(--text-primary);
+}
+
+.btnContainer:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.1s;
+  box-shadow: 0 2px 8px rgba(var(--shadow-rgb), 0.3);
 }
 
 .btnContainer:hover .btnAnimatedBorder::before {
@@ -88,7 +95,9 @@
   align-items: center;
   padding: 1rem 2.8rem;
   border-radius: 48px; /* Inner bounding snap */
-  transition: all 0.4s ease;
+  transition: background var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing),
+              color var(--interaction-duration) var(--interaction-easing);
   color: var(--text-primary);
   background: var(--btn-bg);
   box-shadow: inset 0 2px 5px rgba(var(--white-rgb), 0.15); /* Top inner 3D glow */
@@ -117,7 +126,8 @@
 .btn i {
   margin-left: 1rem;
   font-size: 1.25rem;
-  transition: all 0.4s ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              color var(--interaction-duration) var(--interaction-easing);
 
   :global(.light-theme) & {
     color: #ffffff;

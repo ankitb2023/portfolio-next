@@ -52,49 +52,49 @@
 }
 
 .posJs {
-  bottom: -70px;
+  bottom: -60px;
   animation-delay: -4s;
 }
 
 .posReact {
-  bottom: -135px;
+  bottom: -125px;
   left: 10px;
   animation-delay: 0s;
 }
 
 .posTs {
-  bottom: -70px;
+  bottom: -60px;
   left: 130px;
   animation-delay: -1s;
 }
 
 .posNext {
-  bottom: -130px;
+  bottom: -120px;
   left: 130px;
   animation-delay: -2s;
   :global(.light-theme) & { border: 2px solid #0f172a; } /* Near black for Next.js */
 }
 
 .posJava {
-  bottom: -190px;
+  bottom: -180px;
   left: 70px;
   animation-delay: -3s;
 }
 
 .posSpring {
-  bottom: -100px;
+  bottom: -90px;
   left: 270px;
   animation-delay: -1s;
 }
 
 .posDocker {
-  bottom: -150px;
+  bottom: -140px;
   left: 250px;
   animation-delay: -5s;
 }
 
 .posGit {
-  bottom: -190px;
+  bottom: -180px;
   left: 170px;
   animation-delay: -2.5s;
 }

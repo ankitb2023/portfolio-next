@@ -40,7 +40,7 @@
   i {
     color: var(--accent-secondary);
     font-size: 2.6rem;
-    transition: transform 0.5s ease;
+    transition: transform var(--interaction-duration) var(--interaction-easing);
   }
 
   &:hover i {
@@ -68,7 +68,7 @@
   color: var(--text-secondary);
   text-decoration: none;
   text-transform: capitalize;
-  transition: all 0.3s ease;
+  transition: color var(--interaction-duration) var(--interaction-easing);
   padding: 0.5rem 0;
 
   &::after {
@@ -79,13 +79,14 @@
     width: 0;
     height: 2px;
     background: var(--accent-secondary);
-    transition: width 0.3s ease;
+    transition: width var(--interaction-duration) var(--interaction-easing);
     border-radius: 2px;
     box-shadow: 0 0 10px rgba(var(--border-bright-rgb), 0.6);
   }
 
   &:hover {
     color: var(--text-primary);
+
     &::after {
       width: 100%;
     }
@@ -94,7 +95,7 @@
   &.active {
     color: var(--accent-secondary);
     text-shadow: 0 0 10px rgba(var(--border-bright-rgb), 0.4);
-    
+
     &::after {
       width: 100%;
     }
@@ -174,7 +175,10 @@
   font-size: 1rem;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background var(--interaction-duration) var(--interaction-easing),
+    border-color var(--interaction-duration) var(--interaction-easing),
+    color var(--interaction-duration) var(--interaction-easing),
+    transform var(--interaction-duration) var(--interaction-easing);
   user-select: none;
 
   span {
@@ -208,7 +212,8 @@
   .nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
+    transform: translateX(100%);
     width: 280px;
     height: 100vh;
     background: linear-gradient(135deg, rgba(var(--bg-card-rgb), 0.95), rgba(15, 5, 30, 0.98));
@@ -218,12 +223,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     box-shadow: -10px 0 30px rgba(var(--shadow-rgb), 0.5);
   }
 
   .navOpen {
-    right: 0;
+    transform: translateX(0);
   }
 
   .navList {
@@ -306,7 +311,7 @@
     width: 90%;
     justify-content: space-between;
     padding: 10px 14px;
-    
+
     .resumeMessage {
       font-size: 0.85rem;
       white-space: normal;

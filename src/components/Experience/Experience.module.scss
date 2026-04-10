@@ -93,7 +93,7 @@
 
     .card {
       border-color: rgba(var(--border-bright-rgb), 0.4);
-      transform: translateY(-5px);
+      transform: translateY(var(--hover-lift-md));
       box-shadow: 0 15px 30px rgba(var(--shadow-rgb), 0.4), inset 0 0 20px rgba(var(--border-rgb), 0.1);
     }
 
@@ -191,7 +191,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              border-color var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing);
   position: relative;
   z-index: 5;
 
@@ -242,7 +244,10 @@
   box-shadow: 0 10px 30px rgba(var(--shadow-rgb), 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              border-color var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing),
+              background var(--interaction-duration) var(--interaction-easing);
   position: relative;
   z-index: 3;
 

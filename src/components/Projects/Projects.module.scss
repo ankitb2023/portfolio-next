@@ -78,7 +78,7 @@
   &:hover {
     border-color: rgba(var(--border-bright-rgb), 0.6);
     box-shadow: 0 15px 40px rgba(var(--accent-glow-rgb), 0.4);
-    transform: translateY(-5px);
+    transform: translateY(var(--hover-lift-md));
 
     .imageContainer img {
       transform: scale(1.1);
@@ -227,7 +227,10 @@
     border-radius: 1rem;
     text-decoration: none;
     box-shadow: inset 0 0 10px rgba(var(--border-rgb), 0.1), 0 4px 10px rgba(var(--shadow-rgb), 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform var(--interaction-duration) var(--interaction-easing),
+                background var(--interaction-duration) var(--interaction-easing),
+                border-color var(--interaction-duration) var(--interaction-easing),
+                box-shadow var(--interaction-duration) var(--interaction-easing);
     position: relative;
     overflow: hidden;
 
@@ -262,7 +265,7 @@
       background: linear-gradient(135deg, rgba(var(--accent-glow-rgb), 0.6), rgba(80, 20, 150, 0.8));
       border-color: rgba(var(--border-bright-rgb), 0.8);
       box-shadow: 0 8px 25px rgba(var(--accent-glow-rgb), 0.5), inset 0 0 15px rgba(var(--white-rgb), 0.2);
-      transform: translateY(-4px) scale(1.03);
+      transform: translateY(var(--hover-lift-sm)) scale(1.03);
 
       :global(.light-theme) & {
         border-color: transparent; /* Border disappears */
@@ -283,6 +286,11 @@
           color: #ffffff; /* White icon on solid purple */
         }
       }
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.97);
+      transition-duration: 0.1s;
     }
   }
 }

@@ -78,14 +78,16 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              border-color var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing);
   height: 175px; /* Constraining height specifically requested */
 
   &:hover {
     border-color: rgba(var(--border-bright-rgb), 0.4);
     box-shadow: 0 10px 30px rgba(var(--accent-glow-rgb), 0.2);
     transform: translateX(10px);
-    border: 2px solid var(--accent-primary);
+    border: 1px solid var(--accent-primary);
 
     .image img {
       transform: scale(1.05);

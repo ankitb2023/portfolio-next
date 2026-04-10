@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./scroll-reveal.css";
 import { ToastProvider } from "@/context/ToastContext";
 import { VisitorProvider } from "@/context/VisitorContext";
 import { Header } from "@/components/Header";

@@ -66,7 +66,9 @@
   box-shadow: 0 10px 30px rgba(var(--shadow-rgb), 0.3), inset 0 0 20px rgba(var(--border-rgb), 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: all 0.4s ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              border-color var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing);
   
   /* Flex mechanics to support vertical centering of uneven sub-grids */
   display: flex;
@@ -78,10 +80,9 @@
   }
 
   &:hover {
-    border-color: rgba(var(--border-bright-rgb), 0.4);
+    border-color: var(--accent-primary);
     box-shadow: 0 15px 40px rgba(var(--shadow-rgb), 0.5), inset 0 0 30px rgba(var(--border-rgb), 0.1);
-    transform: translateY(-5px);
-    border: 2px solid var(--accent-primary);
+    transform: translateY(var(--hover-lift-md));
   }
 }
 
@@ -117,7 +118,10 @@
   border: 1px solid rgba(var(--white-rgb), 0.05);
   padding: 1.5rem 0.5rem;
   border-radius: 1.2rem;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              background var(--interaction-duration) var(--interaction-easing),
+              border-color var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing);
   cursor: pointer;
   min-width: 100px; /* Switch from auto-fill stretch to standard grid layout */
 
@@ -162,7 +166,7 @@
     background: rgba(var(--bg-hover-rgb), 0.5);
     border-color: var(--skill-color);
     box-shadow: 0 2px 8px rgba(var(--shadow-rgb), 0.12), 0 0 6px var(--skill-color);
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.05) translateY(var(--hover-lift-md));
 
     :global(.light-theme) & {
       background: #ffffff;

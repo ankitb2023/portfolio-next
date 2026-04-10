@@ -67,7 +67,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: background var(--interaction-duration) var(--interaction-easing);
   position: relative;
   z-index: 1;
 }
@@ -109,14 +109,15 @@
 }
 
 .editorBody {
-  padding: 24px 20px 0px;
+  padding: 24px 20px 22px;
   font-family: 'Fira Code', Consolas, Monaco, 'Courier New', Courier, monospace;
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   line-height: 1.7;
   color: var(--text-primary);
   text-align: left;
-  height: 340px;
+  height: 320px;
   overflow-y: auto;
+  scroll-behavior: smooth;
   scrollbar-width: none;
   /* Firefox */
   -ms-overflow-style: none;
@@ -186,7 +187,7 @@
 @media(max-width: 925px) {
   .editorBody {
     font-size: 1.2rem;
-    padding: 16px;
+    padding: 16px 16px 20px;
     height: 310px;
   }
 }
@@ -194,7 +195,7 @@
 @media(max-width: 450px) {
   .editorBody {
     font-size: 1.1rem;
-    padding: 12px;
+    padding: 10px 12px 20px;
     height: 260px;
   }
 }
@@ -204,7 +205,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  margin-top: 10px;
+  // margin-top: 10px;
 }
 
 .terminalInput {
@@ -261,11 +262,11 @@
 }
 
 .suggestionsDropdown {
-  margin-top: 8px;
+  margin-top: 4px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 10px;
+  padding: 6px;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   border: 1px solid rgba(var(--white-rgb), 0.1);
@@ -279,7 +280,7 @@
 .suggestionItem {
   color: var(--text-secondary);
   font-size: 0.9em;
-  padding: 4px 8px;
+  padding: 0px 8px;
   background: rgba(var(--white-rgb), 0.05);
   border-radius: 4px;
   cursor: pointer;
@@ -307,7 +308,7 @@
 }
 
 .terminalTable {
-  padding: 10px;
+  padding: 0px 10px;
   border-radius: 4px;
 
   :global(.light-theme) & {

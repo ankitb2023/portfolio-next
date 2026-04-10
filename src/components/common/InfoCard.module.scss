@@ -61,7 +61,10 @@
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              background var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing),
+              color var(--interaction-duration) var(--interaction-easing);
   flex-shrink: 0;
   /* Always pinned to far right regardless of text length — fixes
      misalignment when cards stack to two separate rows */

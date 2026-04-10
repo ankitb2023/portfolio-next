@@ -31,7 +31,7 @@ export const About = () => {
     const handleMouseLeave = () => {
         setTiltStyle({
             transform: `scale(1) rotateX(0deg) rotateY(0deg) translateY(0px)`,
-            transition: 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+            transition: 'transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1)'
         });
     };
     const experience = useMemo(() => {

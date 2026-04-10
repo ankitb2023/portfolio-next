@@ -177,7 +177,7 @@ export const useTerminal = (styles) => {
           <div style={{ color: 'var(--text-secondary)' }}>Help menu: Available commands organized by category</div>
 
           <div className={styles.terminalTable}>
-            <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '10px' }}>
               <div style={{ color: 'var(--accent-secondary)', fontWeight: 'bold' }}>PAGES:</div>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 {['about', 'experience', 'skills', 'projects', 'education', 'contact'].map(c => (

@@ -217,11 +217,15 @@ export const TerminalCard = () => {
                     {context?.type === 'project' ? `> project ${context.id + 1}` : '>'}
                   </span>
                   <input
+                    ref={(el) => {
+                      if (el && isAnimationComplete) {
+                        el.focus({ preventScroll: true });
+                      }
+                    }}
                     className={styles.terminalInput}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    autoFocus
                     spellCheck={false}
                     autoComplete="off"
                   />

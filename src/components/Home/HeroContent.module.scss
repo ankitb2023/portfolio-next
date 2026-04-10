@@ -117,7 +117,10 @@
   justify-content: center;
   align-items: center;
   font-size: 1.8rem;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform var(--interaction-duration) var(--interaction-easing),
+              background var(--interaction-duration) var(--interaction-easing),
+              color var(--interaction-duration) var(--interaction-easing),
+              box-shadow var(--interaction-duration) var(--interaction-easing);
   flex-shrink: 0;
 
   :global(.light-theme) & {
@@ -295,6 +298,8 @@
   vertical-align: text-bottom;
   position: relative;
   align-items: center;
+  justify-content: center;
+  width: 90px;
 }
 
 .rotatingText {
