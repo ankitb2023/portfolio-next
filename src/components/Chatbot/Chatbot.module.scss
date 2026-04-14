@@ -1,0 +1,446 @@
+.chatbotWrapper {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem; /* Floating button bottom-left as requested */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.floatingButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(var(--shadow-rgb), 0.3), 0 0 15px rgba(var(--accent-glow-rgb), 0.5);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(var(--shadow-rgb), 0.4), 0 0 25px rgba(var(--accent-glow-rgb), 0.7);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  i {
+    transition: transform 0.3s ease;
+  }
+}
+
+.modalContainer {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 350px;
+  max-height: 500px;
+  height: calc(100vh - 120px);
+  background: var(--editor-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--border-rgb), 0.3);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(var(--shadow-rgb), 0.5);
+  transform-origin: bottom left;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+  &.closing {
+    animation: popOut 0.2s ease-in forwards;
+  }
+}
+
+.header {
+  background: linear-gradient(135deg, rgba(var(--bg-card-rgb), 0.9), rgba(var(--bg-hover-rgb), 0.9));
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(var(--border-rgb), 0.2);
+
+  .headerInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    .titles {
+      display: flex;
+      flex-direction: column;
+
+      h4 {
+        font-size: 1.4rem;
+        color: var(--text-primary);
+        font-weight: 600;
+        margin: 0;
+      }
+      span {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+      }
+    }
+  }
+
+  .closeBtn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent-pink);
+    }
+  }
+}
+
+.chatBody {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(var(--border-rgb), 0.5);
+    border-radius: 10px;
+  }
+}
+
+.messageRow {
+  display: flex;
+  width: 100%;
+
+  &.userRow {
+    justify-content: flex-end;
+  }
+  &.botRow {
+    justify-content: flex-start;
+  }
+}
+
+.messageBubble {
+  max-width: 85%;
+  padding: 1rem 1.4rem;
+  border-radius: 16px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  animation: fadeIn 0.3s ease forwards;
+  word-wrap: break-word;
+
+  &.userBubble {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+
+  &.botBubble {
+    background: rgba(var(--bg-hover-rgb), 0.6);
+    color: var(--text-primary);
+    border: 1px solid rgba(var(--border-rgb), 0.1);
+    border-bottom-left-radius: 4px;
+    
+    a {
+      color: var(--accent-light);
+      text-decoration: underline;
+      &:hover { color: var(--accent-pink); }
+    }
+  }
+
+  &.cardBubble {
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 90%;
+  }
+}
+
+.typingIndicator {
+  display: flex;
+  gap: 4px;
+  padding: 0.5rem;
+
+  span {
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+
+    &:nth-child(1) { animation-delay: -0.32s; }
+    &:nth-child(2) { animation-delay: -0.16s; }
+  }
+}
+
+.suggestionChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.3s ease forwards;
+
+  button {
+    background: rgba(var(--bg-hover-rgb), 0.8);
+    border: 1px solid rgba(var(--border-rgb), 0.3);
+    color: var(--accent-light);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    animation: chipIn 0.3s ease both;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.06}s;
+      }
+    }
+
+    &:hover {
+      background: rgba(var(--accent-primary), 0.2);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@keyframes chipIn {
+  0% { opacity: 0; transform: translateY(8px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.inputArea {
+  padding: 1rem 1.5rem;
+  background: rgba(var(--bg-card-rgb), 0.95);
+  border-top: 1px solid rgba(var(--border-rgb), 0.2);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  input {
+    flex: 1;
+    background: rgba(var(--bg-hover-rgb), 0.4);
+    border: 1px solid rgba(var(--border-rgb), 0.2);
+    padding: 1rem 1.4rem;
+    border-radius: 20px;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 10px rgba(var(--accent-primary), 0.2);
+    }
+    
+    &::placeholder {
+      color: var(--text-secondary);
+    }
+  }
+
+  .sendBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: var(--accent-secondary);
+      transform: scale(1.05);
+    }
+    
+    &:disabled {
+      background: var(--text-secondary);
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Project Card specifically for chatbot */
+.miniProjectCard {
+  background: rgba(var(--bg-card-rgb), 0.9);
+  border: 1px solid rgba(var(--border-rgb), 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--border-rgb), 0.5);
+  }
+
+  .imgWrapper {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .cardContent {
+    padding: 1rem;
+
+    h5 {
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+
+      button, a {
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        flex: 1;
+        text-decoration: none;
+      }
+
+      .primaryBtn {
+        background: var(--accent-primary);
+        color: #fff;
+        border: none;
+        &:hover { background: var(--accent-secondary); }
+      }
+
+      .secondaryBtn {
+        background: transparent;
+        color: var(--accent-light);
+        border: 1px solid var(--accent-primary);
+        &:hover { background: rgba(var(--accent-primary), 0.1); }
+      }
+    }
+  }
+}
+
+.skillsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  .skillCat {
+    h6 {
+      font-size: 1.1rem;
+      color: var(--accent-light);
+      margin-bottom: 0.5rem;
+    }
+    .skillGrid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      
+      span {
+        background: rgba(var(--bg-card-rgb), 0.8);
+        border: 1px solid rgba(var(--border-rgb), 0.2);
+        padding: 0.3rem 0.6rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--text-primary);
+        
+        img { width: 14px; height: 14px; }
+        i { font-size: 1.2rem; }
+      }
+    }
+  }
+}
+
+/* Animations */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes popOut {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.8) translateY(20px); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@media (max-width: 500px) {
+  .chatbotWrapper {
+    left: auto;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .modalContainer {
+    width: calc(100vw - 2rem);
+    left: auto;
+    right: 0;
+    bottom: 70px;
+    transform-origin: bottom right;
+  }
+}

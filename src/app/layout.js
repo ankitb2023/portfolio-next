@@ -8,6 +8,7 @@ import { BackToTop } from "@/components/common/BackToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { PWA } from "@/components/PWA";
+import { Chatbot } from "@/components/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
               <Header />
               <CommandPalette />
               {children}
+              <Chatbot />
               <BackToTop />
             </ToastProvider>
           </VisitorProvider>

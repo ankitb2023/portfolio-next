@@ -3,6 +3,7 @@ import { useTheme } from 'next-themes';
 import { projectsData } from '../data/projects';
 import { experienceData } from '../data/experience';
 import { educationData } from '../data/education';
+import { EMAIL, MAIL_TO_URL, LINKEDIN_URL, GITHUB_URL } from '../constants/constants';
 
 export const useTerminal = (styles) => {
   const [history, setHistory] = useState([]);
@@ -300,7 +301,7 @@ export const useTerminal = (styles) => {
     } else if (cmd === 'contact') {
       pushOutput(
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <div><span style={{ color: 'var(--text-secondary)' }}>Email:</span> ankit.bhujeja2023@gmail.com</div>
+          <div><span style={{ color: 'var(--text-secondary)' }}>Email:</span> {EMAIL}</div>
           <div style={{ margin: '4px 0' }}>Launch an action:</div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <span className={styles.clickableCommand} onClick={() => executeAndSetInput('mail me')}>mail me</span>
@@ -312,16 +313,16 @@ export const useTerminal = (styles) => {
       );
     } else if (cmd === 'mail me') {
       pushOutput(<div className={styles.terminalText}>Opening mail client...</div>);
-      window.open('mailto:ankit.bhujeja2023@gmail.com?subject=Hello!&body=Hi Ankit,%0D%0A%0D%0AI saw your portfolio and wanted to reach out.', '_blank');
+      window.open(MAIL_TO_URL, '_blank');
     } else if (cmd === 'open github') {
       pushOutput(<div className={styles.terminalText}>Opening GitHub...</div>);
-      window.open('https://github.com/ankitb2023', '_blank');
+      window.open(GITHUB_URL, '_blank');
     } else if (cmd === 'open linkedin') {
       pushOutput(<div className={styles.terminalText}>Opening LinkedIn...</div>);
-      window.open('https://linkedin.com/in/ankit-bhujeja', '_blank');
+      window.open(LINKEDIN_URL, '_blank');
     } else if (cmd === 'hire me') {
       pushOutput(<div style={{ color: 'var(--syntax-check)' }}>Great choice! Opening mail client...</div>);
-      window.open('mailto:ankit.bhujeja2023@gmail.com?subject=Inquiry from Portfolio&body=Hi Ankit, I am interested in hiring you for...', '_blank');
+      window.open(`mailto:${EMAIL}?subject=Inquiry from Portfolio&body=Hi Ankit, I am interested in hiring you for...`, '_blank');
     } else if (cmd === 'download resume') {
       pushOutput(<div className={styles.terminalText}>Downloading resume...</div>);
       window.open('/documents/AnkitBhujejaResume.pdf', '_blank');
