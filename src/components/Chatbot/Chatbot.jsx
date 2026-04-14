@@ -251,6 +251,7 @@ export const Chatbot = () => {
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const modalRef = useRef(null);
   const lastIntentRef = useRef(null);
   const projectPageRef = useRef(0); // Track which page of projects we're showing
 
@@ -279,6 +280,23 @@ export const Chatbot = () => {
       return () => clearTimeout(timer);
     }
   }, [messages, isOpen, isTyping]);
+
+  // Handle click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && modalRef.current && !modalRef.current.contains(event.target)) {
+        handleClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
 
   // Focus input when chat opens
   useEffect(() => {
@@ -695,7 +713,7 @@ export const Chatbot = () => {
 
       {/* Chat Modal */}
       {isOpen && (
-        <div className={`${styles.modalContainer} ${isClosing ? styles.closing : ''}`}>
+        <div ref={modalRef} className={`${styles.modalContainer} ${isClosing ? styles.closing : ''}`}>
           {/* Header */}
           <div className={styles.header}>
             <div className={styles.headerInfo}>

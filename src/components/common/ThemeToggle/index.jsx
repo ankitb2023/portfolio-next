@@ -19,23 +19,21 @@ export const ThemeToggle = () => {
 
   const toggleTheme = () => {
     if (theme === "dark") setTheme("light");
-    else if (theme === "light") setTheme("system");
     else setTheme("dark");
   };
 
   const getIcon = () => {
     if (theme === "dark") return "fas fa-moon";
-    if (theme === "light") return "fas fa-sun";
-    return "fas fa-desktop"; // System
+    return "fas fa-sun";
   };
 
-  const currentThemeClass = theme === "dark" ? styles.dark : theme === "light" ? styles.light : styles.system;
+  const currentThemeClass = theme === "dark" ? styles.dark : styles.light;
 
   return (
     <button
       onClick={toggleTheme}
       className={styles.themeToggle}
-      aria-label="Toggle Dark/Light/System Mode"
+      aria-label="Toggle Dark/Light Mode"
       title={`Current: ${theme} - Click to switch`}
     >
       <div className={`${styles.iconContainer} ${currentThemeClass}`}>

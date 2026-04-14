@@ -12,8 +12,8 @@ export function ThemeProvider({ children }) {
   return (
     <NextThemesProvider 
       attribute="class" 
-      defaultTheme="system" 
-      enableSystem={true}
+      defaultTheme="dark" 
+      enableSystem={false}
       value={{ light: 'light-theme', dark: 'dark-theme' }}
     >
       {children}

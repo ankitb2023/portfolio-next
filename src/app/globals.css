@@ -105,18 +105,18 @@ html{
   --accent-dark: #4c1d95;
   
   /* Abstracted variables for components */
-  --btn-bg: var(--accent-primary); 
-  --btn-hover-bg: var(--accent-secondary); 
+  --btn-bg: var(--accent-secondary); 
+  --btn-hover-bg: var(--accent-primary); 
   --editor-bg: #f3f0ff;
   --editor-hover-bg: #eae5ff;
   --icon-color: #8b5cf6; /* Soft colored icons */
   --info-icon-color: #6d28d9;
 
   /* Terminal Syntax (Light Mode adjusted for high visibility) */
-  --syntax-keyword: #d73a49;
-  --syntax-variable: #005cc5;
+  --syntax-keyword: #b31d28;
+  --syntax-variable: #00458a;
   --syntax-string: #032f62;
-  --syntax-check: #22863a;
+  --syntax-check: #144f22;
   
   --scrollbar-track: #e2e8f0;
   --scrollbar-thumb: #a78bfa;

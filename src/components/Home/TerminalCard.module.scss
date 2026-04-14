@@ -259,6 +259,14 @@
     background: rgba(39, 201, 63, 0.2);
     transform: translateY(-1px);
   }
+
+  :global(.light-theme) & {
+    color: #144f22; 
+    background: rgba(39, 201, 63, 0.25);
+    &:hover {
+      background: rgba(39, 201, 63, 0.35);
+    }
+  }
 }
 
 .suggestionsDropdown {
