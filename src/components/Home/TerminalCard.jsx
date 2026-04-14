@@ -76,6 +76,7 @@ export const TerminalCard = () => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+  const [isInViewport, setIsInViewport] = useState(false);
   
   const containerRef = useRef(null);
   const bodyRef = useRef(null);
@@ -106,6 +107,50 @@ export const TerminalCard = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Track whether the terminal card is ≥90% visible in the viewport
+  useEffect(() => {
+    const viewportObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsInViewport(entry.isIntersecting);
+
+        // Blur the input when the card scrolls out of view
+        if (!entry.isIntersecting && inputRef.current && document.activeElement === inputRef.current) {
+          inputRef.current.blur();
+        }
+      },
+      { threshold: 0.9 }
+    );
+
+    if (containerRef.current) viewportObserver.observe(containerRef.current);
+
+    return () => viewportObserver.disconnect();
+  }, []);
+
+  // Auto-focus the terminal input on any keypress when card is ≥90% visible
+  useEffect(() => {
+    if (!isAnimationComplete || !isInViewport) return;
+
+    const handleGlobalKeyDown = (e) => {
+      // Ignore if user is already typing in another input/textarea
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+        // Allow if it's our own terminal input
+        if (document.activeElement !== inputRef.current) return;
+      }
+
+      // Ignore modifier-only keys and shortcuts
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      // Focus the terminal input so the keystroke lands there
+      if (inputRef.current && document.activeElement !== inputRef.current) {
+        inputRef.current.focus({ preventScroll: true });
+      }
+    };
+
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [isAnimationComplete, isInViewport]);
+
   useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
@@ -118,6 +163,22 @@ export const TerminalCard = () => {
       setTimeout(() => executeCommand('help'), 400);
     }
   }, [isAnimationComplete, history.length, executeCommand]);
+
+  const inputRef = useRef(null);
+
+
+
+  const handleTerminalClick = useCallback((e) => {
+    // If they clicked a clickable command or suggestion item, let it handle itself
+    if (e.target.closest(`.${styles.clickableCommand}`) || e.target.closest(`.${styles.suggestionItem}`)) {
+      return;
+    }
+    
+    // Otherwise, ensure focus is on the input
+    if (inputRef.current && isAnimationComplete) {
+      inputRef.current.focus({ preventScroll: true });
+    }
+  }, [isAnimationComplete, styles]);
 
   const handleComplete = useCallback((idx) => {
     setCurrentLineIndex(prev => {
@@ -138,7 +199,7 @@ export const TerminalCard = () => {
           <span className={styles.dotYellow}></span>
           <span className={styles.dotGreen}></span>
         </div>
-        <div className={styles.editorBody} ref={bodyRef}>
+        <div className={styles.editorBody} ref={bodyRef} onClick={handleTerminalClick}>
           <code>
             {terminalLines.map((line, idx) => {
               let isFuture = idx > currentLineIndex;
@@ -218,9 +279,7 @@ export const TerminalCard = () => {
                   </span>
                   <input
                     ref={(el) => {
-                      if (el && isAnimationComplete) {
-                        el.focus({ preventScroll: true });
-                      }
+                      inputRef.current = el;
                     }}
                     className={styles.terminalInput}
                     value={input}
