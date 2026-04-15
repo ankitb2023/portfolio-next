@@ -5,7 +5,6 @@ import { Education } from "@/components/Education";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
 
 export const metadata = {
@@ -46,7 +45,6 @@ export default function HomePage() {
       <ScrollReveal><Projects /></ScrollReveal>
       <ScrollReveal><Experience /></ScrollReveal>
       <ScrollReveal><Contact /></ScrollReveal>
-      <Footer />
     </main>
   );
 }

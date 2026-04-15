@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { PWA } from "@/components/PWA";
 import { Chatbot } from "@/components/Chatbot";
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,6 +101,7 @@ export default function RootLayout({ children }) {
               <Header />
               <CommandPalette />
               {children}
+              <Footer />
               <Chatbot />
               <BackToTop />
             </ToastProvider>

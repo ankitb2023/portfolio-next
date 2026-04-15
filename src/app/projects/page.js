@@ -1,5 +1,4 @@
 import { Projects } from "@/components/Projects";
-import { Footer } from "@/components/Footer";
 
 export const metadata = {
   title: 'Portfolio | Projects Built',
@@ -10,7 +9,6 @@ export default function ProjectsPage() {
   return (
     <main style={{ paddingTop: '80px' }}>
       <Projects showAll={true} />
-      <Footer />
     </main>
   );
 }
