@@ -24,7 +24,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Ankit Bhujeja',
-  jobTitle: 'Senior Frontend Engineer',
+  jobTitle: 'Senior Software Engineer',
   url: 'https://ankitbhujeja.com',
   sameAs: [
     'https://linkedin.com/in/ankitbhujeja',

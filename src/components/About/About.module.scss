@@ -22,7 +22,7 @@
   margin-bottom: 3rem;
 
   :global(.light-theme) & {
-    color: #111827; 
+    color: #111827;
   }
 
   i {
@@ -31,7 +31,8 @@
     text-shadow: 0 0 15px rgba(var(--accent-glow-rgb), 0.4);
 
     :global(.light-theme) & {
-      color: #111827; /* Dark icon */
+      color: #111827;
+      /* Dark icon */
       text-shadow: none;
     }
   }
@@ -202,7 +203,8 @@
 
     :global(.light-theme) & {
       font-weight: 500;
-      color: #1f2937; /* Even deeper gray/slate */
+      color: #1f2937;
+      /* Even deeper gray/slate */
     }
   }
 }
@@ -275,7 +277,7 @@
 @media screen and (max-width: 768px) {
   .about {
     padding: 0px 24px;
-    margin-top: var(--section-margin-top) - 1rem;
+    margin-top: var(--section-margin-top)-1rem;
     min-height: auto;
   }
 
@@ -349,7 +351,7 @@
 @media screen and (max-width: 480px) {
   .about {
     padding: 0px 16px;
-    margin-top: var(--section-margin-top) - 1rem;
+    margin-top: var(--section-margin-top)-1rem;
     min-height: auto;
     /* overflow:hidden stays from parent — cardScrollWrapper handles inner scroll */
   }

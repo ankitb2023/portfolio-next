@@ -172,3 +172,17 @@ html::-webkit-scrollbar-thumb{
 :root{
   --section-margin-top: 7rem;
 }
+
+/* Tablet: reduce section spacing */
+@media (max-width: 768px) {
+  :root {
+    --section-margin-top: 5rem;
+  }
+}
+
+/* PWA standalone mode: reduce section spacing */
+@media (display-mode: standalone) {
+  :root {
+    --section-margin-top: 5rem;
+  }
+}

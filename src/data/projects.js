@@ -36,7 +36,7 @@ export const projectsData = [
     description:
       'A web application that displays detailed information about movies and web series, including insights and predictions for upcoming seasons.',
     imgSrc: '/images/projects/featured/boxoffice.png',
-    viewLink: 'https://ankitbhujeja.github.io/box-office-lighttheme/',
+    viewLink: 'https://ankitb2023.github.io/box-office-lighttheme/#/',
     codeLink: 'https://github.com/ankitb2023/box-office-lighttheme',
   },
   {
@@ -52,7 +52,7 @@ export const projectsData = [
     description:
       "A classic number guessing game built with React, featuring move history tracking and an animated winner display for an enhanced user experience.",
     imgSrc: '/images/projects/guessnumber.png',
-    viewLink: 'https://ankitbhujeja.github.io/GuessTheNumber/',
+    viewLink: 'https://ankitb2023.github.io/GuessTheNumber/',
     codeLink: 'https://github.com/ankitb2023/GuessTheNumber',
   },
   {
@@ -75,22 +75,22 @@ export const projectsData = [
     title: 'Calculator',
     description: "A Reactjs application used for basic computation.",
     imgSrc: '/images/projects/calculator_d.png',
-    viewLink: 'https://ankitbhujeja.github.io/calculator_d/',
+    viewLink: 'https://calculator-ab26.netlify.app/',
     codeLink: 'https://github.com/ankitb2023/calculator_dark',
   },
   {
-    title: 'Box Office App',
+    title: 'Box Office (Dark)',
     description:
       'A web application that displays detailed information about movies and web series, including insights and predictions for upcoming seasons.',
     imgSrc: '/images/projects/boxofficedark.png',
-    viewLink: 'https://ankitbhujeja.github.io/box-office/',
+    viewLink: 'https://ankitbhujeja.github.io/box-office/#/',
     codeLink: 'https://github.com/ankitb2023/box-office',
   },
   {
     title: 'Animated Car',
     description: "A visually engaging project that demonstrates advanced CSS animations and transitions.",
     imgSrc: '/images/projects/animatedcar.png',
-    viewLink: 'https://ankitbhujeja.github.io/AnimatedCarScene/',
+    viewLink: 'https://ankitb2023.github.io/AnimatedCarScene/',
     codeLink: 'https://github.com/ankitb2023/AnimatedCarScene',
   },
   {

@@ -87,7 +87,7 @@ export const Header = () => {
     // Visibility change logic
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = "Come back 👀 | Ankit Portfolio";
+        document.title = "Come back | Ankit Portfolio";
       } else {
         const titleMap = {
           home: 'Home',
@@ -147,7 +147,7 @@ export const Header = () => {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
-          <i className="fab fa-angular" aria-hidden="true"></i> Ankit
+          <img src="/abtransparentIcon.png" alt="AB Logo" style={{ width: '36px', height: '36px', objectFit: 'contain' }} /> <span>Ankit</span>
         </Link>
 
 

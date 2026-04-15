@@ -12,21 +12,21 @@ export const Projects = ({ showAll = false }) => {
       <h2 className={styles.heading}>
         <i className="fas fa-laptop-code" aria-hidden="true"></i> What I've <span>Built</span>
       </h2>
-      
+
       <div className={styles.grid}>
         {displayedProjects.map((project, index) => (
           <div className={styles.card} key={index}>
             <div className={styles.imageContainer}>
-              <Image 
-                src={project.imgSrc} 
-                alt={project.title} 
+              <Image
+                src={project.imgSrc}
+                alt={project.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ objectFit: 'cover', objectPosition: 'top' }}
                 draggable="false"
-                unoptimized
               />
             </div>
-            
+
             <div className={styles.persistentTitle}>
               <h3>{project.title}</h3>
             </div>
@@ -36,14 +36,20 @@ export const Projects = ({ showAll = false }) => {
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
                 <div className={styles.btns}>
-                  <a
-                    href={project.viewLink}
-                    className={styles.btn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-eye" aria-hidden="true"></i> View
-                  </a>
+                  {project.viewLink && project.viewLink !== '#' ? (
+                    <a
+                      href={project.viewLink}
+                      className={styles.btn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fas fa-eye" aria-hidden="true"></i> View
+                    </a>
+                  ) : (
+                    <span className={`${styles.btn} ${styles.disabled}`}>
+                      <i className="fas fa-eye-slash" aria-hidden="true"></i> View
+                    </span>
+                  )}
                   <a
                     href={project.codeLink}
                     className={styles.btn}
@@ -58,7 +64,7 @@ export const Projects = ({ showAll = false }) => {
           </div>
         ))}
       </div>
-      
+
       <div className={styles.viewAllContainer}>
         {showAll ? (
           <AnimatedButton href="/" iconClass="fas fa-arrow-left" ariaLabel="Back To Home">

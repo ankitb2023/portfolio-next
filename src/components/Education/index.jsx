@@ -22,6 +22,7 @@ export const Education = () => {
                 src={edu.image}
                 alt={edu.school}
                 fill
+                sizes="(max-width: 768px) 100vw, 320px"
                 style={{ objectFit: 'cover' }}
                 draggable="false"
               />
