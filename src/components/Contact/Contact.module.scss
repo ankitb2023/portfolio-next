@@ -262,6 +262,7 @@
   font-weight: 500;
   transition: color 0.2s ease;
   padding: 4px;
+  font-size: 1.2rem;
 
   &:hover {
     color: var(--accent-secondary);
@@ -607,7 +608,7 @@
   }
 
   .formGroup {
-    gap: 1.5rem;
+    gap: 2rem;
     margin-bottom: 1.5rem;
   }
 
@@ -752,7 +753,7 @@
   }
 
   .formGroup {
-    gap: 1.2rem;
+    gap: 2rem;
     margin-bottom: 1.2rem;
   }
 
