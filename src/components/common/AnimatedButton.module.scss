@@ -94,7 +94,7 @@
   display: inline-flex;
   align-items: center;
   padding: 1rem 2.8rem;
-  border-radius: 48px; /* Inner bounding snap */
+  border-radius: 50px; /* Inner bounding snap */
   transition: background var(--interaction-duration) var(--interaction-easing),
               box-shadow var(--interaction-duration) var(--interaction-easing),
               color var(--interaction-duration) var(--interaction-easing);

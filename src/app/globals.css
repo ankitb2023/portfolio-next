@@ -186,3 +186,8 @@ html::-webkit-scrollbar-thumb{
     --section-margin-top: 5rem;
   }
 }
+
+/* Kill intro overlay instantly on return visits — blocking script sets [data-intro-shown] before paint */
+html[data-intro-shown] [data-intro-overlay] {
+  display: none !important;
+}

@@ -1,0 +1,236 @@
+/* ── Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #05020e;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(99, 52, 196, 0.08) 0%, transparent 50%);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Floating particles ── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.5);
+  animation: float 6s infinite ease-in-out;
+  animation-delay: calc(var(--i) * -1s);
+
+  &:nth-child(1) { top: 15%; left: 20%; }
+  &:nth-child(2) { top: 75%; left: 80%; width: 4px; height: 4px; }
+  &:nth-child(3) { top: 40%; left: 10%; width: 2px; height: 2px; }
+  &:nth-child(4) { top: 60%; left: 70%; }
+  &:nth-child(5) { top: 20%; left: 85%; width: 2px; height: 2px; }
+  &:nth-child(6) { top: 85%; left: 35%; width: 4px; height: 4px; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50%      { transform: translateY(-30px) scale(1.5); opacity: 0.8; }
+}
+
+/* ── Content wrapper ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ── Modern AB Monogram ── */
+.monogram {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Entry animation */
+  opacity: 0;
+  transform: scale(0.3) rotate(-20deg);
+  filter: blur(10px);
+  transition:
+    opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.5s ease;
+}
+
+.monoIn {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  filter: blur(0);
+}
+
+/* Orbiting ring */
+.ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: rgba(139, 92, 246, 0.8);
+  border-right-color: rgba(139, 92, 246, 0.3);
+  animation: orbit 3s linear infinite;
+}
+
+.ring2 {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(196, 181, 253, 0.4);
+  border-left-color: rgba(196, 181, 253, 0.15);
+  animation: orbit 5s linear infinite reverse;
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* The actual letters */
+.letterWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  /* Glass card */
+  padding: 1.8rem 2.4rem;
+  border-radius: 1.6rem;
+  background: rgba(139, 92, 246, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 0 40px rgba(139, 92, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.letterA,
+.letterB {
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-family: 'Geist', system-ui, sans-serif;
+}
+
+.letterA {
+  color: #8b5cf6;
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.7);
+  animation: letterSlide 0.5s 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.letterB {
+  color: #c4b5fd;
+  text-shadow: 0 0 20px rgba(196, 181, 253, 0.5);
+  animation: letterSlide 0.5s 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.divider {
+  display: block;
+  width: 2px;
+  height: 2.6rem;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(139, 92, 246, 0.6),
+    transparent
+  );
+  border-radius: 2px;
+}
+
+@keyframes letterSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Typewriter name ── */
+.name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e2d9f3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+  min-height: 1.4em;
+  // text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  font-family: 'Geist Mono', monospace;
+}
+
+.nameIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cursor {
+  display: inline-block;
+  color: #8b5cf6;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 1px;
+}
+
+/* ── Subtitle ── */
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(196, 181, 253, 0.5);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.subIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Keyframes ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .monogram {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .letterA,
+  .letterB {
+    font-size: 3rem;
+  }
+
+  .letterWrap {
+    padding: 1.4rem 2rem;
+    border-radius: 1.2rem;
+  }
+
+  .name {
+    font-size: 1.6rem;
+  }
+}

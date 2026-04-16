@@ -10,6 +10,7 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { PWA } from "@/components/PWA";
 import { Chatbot } from "@/components/Chatbot";
 import { Footer } from "@/components/Footer";
+import { IntroLoader } from "@/components/IntroLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,8 +68,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`dark-theme ${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        {/* Blocking script: theme + intro — runs sync before first paint */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            try{
+              var t=localStorage.getItem('theme');
+              document.documentElement.classList.add(t==='light'?'light-theme':'dark-theme');
+            }catch(e){
+              document.documentElement.classList.add('dark-theme');
+            }
+            try{
+              if(sessionStorage.getItem('ab_intro_shown'))
+                document.documentElement.setAttribute('data-intro-shown','');
+            }catch(e){}
+          })();
+        ` }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -98,6 +114,7 @@ export default function RootLayout({ children }) {
           <VisitorProvider>
             <ToastProvider>
               <PWA />
+              <IntroLoader />
               <Header />
               <CommandPalette />
               {children}
