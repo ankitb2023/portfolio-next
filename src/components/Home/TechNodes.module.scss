@@ -24,7 +24,8 @@
   font-size: 1.2rem;
   font-weight: 600;
   box-shadow: 0 10px 25px rgba(var(--shadow-rgb), 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
+  transition: scale 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
+  scale: 1;
   pointer-events: auto; /* Re-enable for the icons themselves */
   animation: floatRandomly 6s ease-in-out infinite alternate;
   
@@ -41,7 +42,7 @@
 }
 
 .techNode:hover {
-  transform: scale(1.1) !important;
+  scale: 1.1;
   box-shadow: 0 10px 30px rgba(var(--white-rgb), 0.05);
   filter: brightness(1.2);
 
