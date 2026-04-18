@@ -32,7 +32,7 @@ export const HeroContent = () => {
         <br /> I'm Ankit<span> Bhujeja</span>
       </h3>
       <p>
-        I am into{' '}
+        I specialize in{' '}
         <span className={styles.typingText}>
           {typedText}
           <span className={styles.cursor}>|</span>

@@ -1,18 +1,18 @@
 export const SCROLLING_SKILLS = [
-  "Problem Solving (DSA)",
-  "Frontend Engineering (React)",
-  "SSR & Performance (Next.js)",
-  "Backend APIs (Spring Boot)",
-  "Scalable System Design"
+  "Building scalable React applications",
+  "Optimizing performance with Next.js",
+  "Designing robust backend APIs",
+  "Solving complex real-world problems",
+  "Delivering production-ready systems"
 ];
 
 export const ROTATING_SECTIONS = [
-  { id: 'about', label: 'About Me' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'work', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Education' },
-  { id: 'contact', label: 'Contact' }
+  { id: 'about', label: 'Who Am I' },
+  { id: 'experience', label: 'My Journey' },
+  { id: 'work', label: 'What I Built' },
+  { id: 'skills', label: 'Tech Stack' },
+  { id: 'education', label: 'Academics' },
+  { id: 'contact', label: "Hire Me" }
 ];
 
 export const techNodesData = [
